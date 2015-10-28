@@ -1,6 +1,6 @@
 //Comment By Austin
 //Comment By Kiley
-import java.util.Date;
+//Commetn By Matt
 
 public class Name {
     private String title;
@@ -33,34 +33,34 @@ public class Name {
     }
 
     public String getTitle() {
-        return null;
+        return this.title;
     }
 
     public String getFirst() {
-        return null;
+        return this.first;
     }
 
     public String getMiddle() {
-        return null;
+        return this.middle;
     }
 
     public String getSurname() {
-        return null;
+        return this.surname;
     }
 
     public String getSurnameParent1() {
-        return null; 
+        return this.surnameParent1; 
     }
 
     public String getSurnameParent2() {
-        return null;
+        return this.surnameParent2;
     }
 
     public String getSuffixProfessional() {
-        return null; 
+        return this.suffixProfessional; 
     }
 
     public String getSuffixGenerational() {
-        return null;
+        return this.suffixGenerational;
     }
 }
