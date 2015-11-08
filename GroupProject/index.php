@@ -14,7 +14,7 @@
 
 		<!-- Custom styles for this template -->
 		<link href="css/site.css" rel="stylesheet">
-        <title>Sticky Footer Navbar Template for Bootstrap</title>
+        <title>Alternative Resolutions</title>
     </head>
     <body>
     
@@ -27,90 +27,45 @@
 				<!-- sidebar Include Don't Delete -->
 				<?php include "php/sidebar.php";?> 
 			    <div class="col-md-9">
-				<!--Delete everything in this level-->
-					<h2 id="sec0">Content</h2>
-						At Bootply we like to build simple Bootstrap templates that utilize the code Bootstap CSS without a lot of customization. Sure you can 
-						find a lot of Bootstrap themes and inspiration, but these templates tend to be heavy on customization
-					<hr class="col-md-12">
-						Rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-						dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores 
-						eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
-						sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
-						Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut.              
-						Rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-						dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores 
-						eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
-						sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
-						Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut!
-					<h2 id="sec1">Content</h2>
-					<p>
-						Rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-						dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut.
-					</p>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="panel panel-default">
-								<div class="panel-heading"><h3>Hello.</h3></div>
-								<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-								  Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-								  dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-								  Aliquam in felis sit amet augue.
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="panel panel-default">
-								<div class="panel-heading"><h3>Hello.</h3></div>
-								<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-									Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-									dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-									Aliquam in felis sit amet augue.
-								</div>
-							</div>
-						</div>  
-					</div>
-			  
-					<hr>
-			  
-					<h2 id="sec2">Section 2</h2>
-					<p>
-						Rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-						dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores 
-						eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
-						sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
-						Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut!
-					</p>
-					<div class="row">
-						<div class="col-md-4"><img src="//placehold.it/300x300" class="img-responsive"></div>
-						<div class="col-md-4"><img src="//placehold.it/300x300" class="img-responsive"></div>
-						<div class="col-md-4"><img src="//placehold.it/300x300" class="img-responsive"></div>
-					</div>
-			  
-					<hr>
-			  
-					<h2 id="sec3">Section 3</h2>
-						Images are responsive sed @mdo but sum are more fun peratis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-						totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-						dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores 
-						eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
-						sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
-						Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut..
-						<br>
-						Fos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
-						sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
-						Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut..
 				
+					<h2 id="sec0">Mission Statement</h2>
+						<p>Assisting individuals and organizations to manage communication, conflict and change in healthy, constructive ways.</p>
+						
+					<hr class="col-md-12">
 					
-					<h2 id="sec4">Section 4</h2>
-						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-						totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-						dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores 
-						eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
-						sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
-						Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
+					<h2 id="sec1">What is Alternative Resolutions?</h2>
+					<p>
+						Established in 1995 in Wisconsin, Alternative Resolutions, Inc. 
+						continues to be a leader in developing and providing innovative communication and 
+						conflict management services to organizations and individuals tailored to their specific needs.  
+						We have a broad range of experience in the workplace, business, court, school, medical, government, 
+						church, community, and family (including divorce) settings.   
+						Thousands of people have successfully turned conflict into opportunities for improved relationships, greater understanding, 
+						and increased productivity with the help of Alternative Resolutions.  Our professional experience and expertise assure the highest 
+						quality services to help you achieve your goals. 
+					</p>
+			  
 					<hr>
-					<h4><a href="http://bootply.com/100993">Edit on Bootply</a></h4>
-					<hr>	
+			  
+					<h2 id="sec2">Why us?</h2>
+					<p>
+						I have been making more than my share of mistakes lately and my boss is really getting 
+						on my case. I think that I understand the directions that people are giving me, but when 
+						I give them the final work product it seems that I've missed something or have not completed 
+						the task as they expected. It looks to me like most of my mistakes happen when I get verbal 
+						directions for what I am expected to do and the person giving them to me is in a hurry. We've 
+						become extremely busy in the last year and the pace has really picked up for all of us. My boss 
+						says that the mistakes are my fault because I’m not a good listener. How can I become a better 
+						listener when it seems like we're always in a rush?
+					</p>
+					<p>
+						It could be said that most workers receive half of their paycheck for listening but many of us 
+						can't say that we are always good listeners. In fact, poor listening can be cited as the cause 
+						for many costly mistakes in the workplace. We may hear with our ears but listening requires far 
+						more than our auditory systems to be in working order. Good listening doesn't just happen - it 
+						takes skill building and effort. Try these tips to improve your listening.
+					</p>
+					<hr>
 				</div> 
 			</div>
 		</div>
