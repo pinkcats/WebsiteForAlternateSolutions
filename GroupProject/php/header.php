@@ -16,8 +16,8 @@
 		<li><a href="services.php">Services</a></li>
 		<li><a href="clients.php">Clients</a></li>
 		<li><a href="services.php">Staff</a></li>
-		<li><a href="contact.php">Contact Us</a></li>
-		<li><a href="portal.php">Client Portal</a></li>
+		<li><a href="contactUs.php">Contact Us</a></li>
+		<li><a href="clientPortal.php">Client Portal</a></li>
 		<!--<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 			<ul class="dropdown-menu">
