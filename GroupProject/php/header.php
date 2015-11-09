@@ -14,7 +14,7 @@
 		<li class="active"><a href="index.php">Home</a></li>
 		<li><a href="articles.php">Articles</a></li>
 		<li><a href="services.html">Services</a></li>
-		<li><a href="clients.html">Clients</a></li>
+		<li><a href="clients.php">Clients</a></li>
 		<li><a href="services.html">Staff</a></li>
 		<li><a href="contact.html">Contact Us</a></li>
 		<li><a href="portal.html">Client Portal</a></li>
