@@ -7,17 +7,17 @@
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">Project name</a>
+		<a class="navbar-brand" href="#">Alternative Resolutions</a>
 	</div>
 	<div id="navbar" class="collapse navbar-collapse">
 		<ul class="nav navbar-nav">
-		<li class="active"><a href="index.php">Home</a></li>
+		<li<!--class="active"-->><a href="index.php">Home</a></li>
 		<li><a href="articles.php">Articles</a></li>
-		<li><a href="services.html">Services</a></li>
+		<li><a href="services.php">Services</a></li>
 		<li><a href="clients.php">Clients</a></li>
-		<li><a href="services.html">Staff</a></li>
-		<li><a href="contact.html">Contact Us</a></li>
-		<li><a href="portal.html">Client Portal</a></li>
+		<li><a href="services.php">Staff</a></li>
+		<li><a href="contact.php">Contact Us</a></li>
+		<li><a href="portal.php">Client Portal</a></li>
 		<!--<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 			<ul class="dropdown-menu">
