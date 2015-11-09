@@ -48,8 +48,8 @@
 								<label>Password: <br/>
 								<input name="password"/></label>
 								<br/>
-								<button type="button">Submit</button>
-								<button type="button">Register</button>
+								<a href="#" class="btn btn-default">Submit</a>
+								<a href="#" class="btn btn-default">Register</a>
 							</form>
 						</div>
 					</article>

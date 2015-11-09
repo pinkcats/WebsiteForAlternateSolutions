@@ -55,7 +55,7 @@
 					<textarea rows="4">
 						
 					</textarea></label><br>
-					<input type="button" value="Submit">
+					<a href="#" class="btn btn-default">Submit</a>
 				</article>
 				</div>
 				</div> 
