@@ -15,9 +15,9 @@
 		<li><a href="articles.php">Articles</a></li>
 		<li><a href="services.html">Services</a></li>
 		<li><a href="clients.html">Clients</a></li>
-		<li><a href="services.html">Staff</a></li>
-		<li><a href="contact.html">Contact Us</a></li>
-		<li><a href="portal.html">Client Portal</a></li>
+		<li><a href="Staff.php">Staff</a></li>
+		<li><a href="ContactUs.php">Contact Us</a></li>
+		<li><a href="ClientPortal.php">Client Portal</a></li>
 		<!--<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 			<ul class="dropdown-menu">

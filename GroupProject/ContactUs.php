@@ -36,6 +36,7 @@
 				
 			    <div class="col-md-9">
 					<h2 id="sec0">Contact Us</h2>
+					<hr/>
 					<!--<div>
 						<img class="imageMargin" src="images/contactUs.jpg" alt="Contact Us">
 					</div>-->

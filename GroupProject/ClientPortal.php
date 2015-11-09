@@ -36,15 +36,17 @@
 				
 			    <div class="col-md-9">
 					<h1>Client Portal</h1>
-					<hr>
+					<hr/>
 					<article>
 						<h3>Manage Your Account</h3>
 						<div>
 							<form>
-								<label>Username: <input name="userName"/></label>
+								<label>Username: <br/>
+								<input name="userName"/></label>
 								
 								<br/>
-								<label>Password: <input name="password"/></label>
+								<label>Password: <br/>
+								<input name="password"/></label>
 								<br/>
 								<button type="button">Submit</button>
 								<button type="button">Register</button>

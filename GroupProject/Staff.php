@@ -35,7 +35,8 @@
 				<?php include "php/sidebar.php";?> 
 				
 			    <div class="col-md-9">
-					<!--<h2 id="sec0">Staff</h2>-->
+					<h2 id="sec0">Staff</h2>
+					<hr/>
 					<h3>Cheryl Stinski, President and founder</h3>
 					<!--<img class="imageMargin floatRight" src="images/staff.png" alt="Staff">-->
 					<p>
@@ -43,22 +44,30 @@
 					passionate about conflict resolution for the past 20 years. She
 					has practiced exclusively in the field since 1993, first as director
 					of a community meditation center and then established a private practice
-					in 1995. In addition to degrees in human services and communication, 
+					in 1995.
+					</p>
+					<p>
+					In addition to degrees in human services and communication, 
 					Cheryl has logged more than 1000 hours in meditation and conflict resolution
 					training and has earned several certificates. She has been extensively involved with 
 					the Wisconsin Association of Mediators, chairing the Communication and 
 					Public Education Comitee, co-coordinating the annual Peer Meditation 
-					Institute and co-authoring WAM's <span class="underline">Model for Basic Mediator Training</span> 
-					and <span class="underline">Guide to Selecting a Mediator</span>. 
+					Institute and co-authoring WAM's Model for Basic Mediator Training 
+					and Guide to Selecting a Mediator. 
 					Cheryl has recieved national recognition for
 					her "Collaborative Community/School Conflict Resolution Model Program"
 					and was the recipient of WAM's 2001 President's Award for 
-					outstanding service. Along with partner Karen Dorn, she is a 
+					outstanding service. 
+					</p>
+					<p>Along with partner Karen Dorn, she is a 
 					featured newspaper columnist addressing workplace issues, as well as
 					the author of many articles dealing with communication, mediataion, and 
 					conflict resolution. Cheryl has trained thousands of professional, volunteer and 
 					student mediators throughout the country and has been an adjunct faculty
-					for Aurora Universiry teaching meditation and conflict resolution. She is an active
+					for Aurora Universiry teaching meditation and conflict resolution.
+					</p>
+					<p>
+					She is an active
 					member of the Association for Conflict Resolution, the Wisconsin Association of 
 					Mediators and the NEW American Society for Training and Development
 					of which she is also past president. Cheryl's passion extends to her volunteer
