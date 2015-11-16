@@ -37,15 +37,16 @@
 			    <div class="col-md-9">
 					<h1>Client Portal</h1>
 					<hr/>
-					<article>
+					<div class="well">
+					<article style="text-align:center;">
 						<h3>Manage Your Account</h3>
 						<div>
 							<form>
-								<label>Username: <br/>
+								<label>Username:
 								<input name="userName"/></label>
 								
 								<br/>
-								<label>Password: <br/>
+								<label>Password: 
 								<input name="password"/></label>
 								<br/>
 								<a href="#" class="btn btn-default">Submit</a>
@@ -53,6 +54,7 @@
 							</form>
 						</div>
 					</article>
+					</div>
 				</div> 
 			</div>
 		</div>
