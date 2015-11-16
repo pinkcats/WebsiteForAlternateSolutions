@@ -35,20 +35,82 @@
 				<?php include "php/sidebar.php";?> 
 				
 			    <div class="col-md-9">
-					<h2 id="sec0">
+					<h1 id="sec0" style="text-align:center;">
 					Welcome, Client!!
+					</h1>
+					<hr/>
 					<div class="well">
 						<article>
-						<h3>Contact Information</h3>
-						<label>First Name:<input name="firstName"/></label>
-						<label>Last Name:<input name="lastName"/></label>
-						<label>Email: <input name="email"/></label>
-						<label>Phone Number: <input name="phoneNumber"/></label>
-						<label>Address: <input name="address"/></label>
+						<h2>Contact Information</h2>
+						<table>
+							<tbody>
+								<tr>
+									<td><label for="firstName">First Name:</label></td>
+									<td><input name="firstName"/></td>
+								</tr>
+								<tr>
+									<td><label for="lastName">Last Name:</label></td>
+									<td><input name="lastName"/></td>
+								</tr>
+								<tr>
+									<td><label for="email">Email:</label></td>
+									<td><input name="email"/></td>
+								</tr>
+								<tr>
+									<td><label for="phoneNumber">Phone Number:</label></td>
+									<td><input name="phoneNumber"/></td>
+								</tr>
+								<tr>
+									<td><label for="address">Address:</label></td>
+									<td><input name="address"/></td>
+								</tr>
+							</tbody>
+						</table>
 						<a href="#" class="btn btn-default">Save</a>
 						</article>
 					</div>
-					</h2>
+					<div class="well">
+						<article>
+							<h2>Schedule of Services</h2>
+							<table>
+								<tbody>
+									<tr>
+										<td><label for="startDate">Start Date:</label></td>
+										<td><input name="startDate"/></td>
+									</tr>
+									<tr>
+										<td><label name="endDate">End Date: </label></td>
+										<td><input name="endDate" id="endDate"/></td>
+									</tr>
+								</tbody>
+							</table>
+							<a href="#" class="btn btn-default">Submit</a><br/>
+							<textarea></textarea>
+						</article>
+					</div>
+					<div class="well">
+						<h2>Request Service</h2>
+						<table>
+							<tbody>
+								<tr>
+									<td><label for="service">Serivce:</label></td>
+									<td><select name="service" id="service">
+										<option value="0">The services</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td><label for="date">Date:</label></td>
+									<td><input name="date" id="date"/></td>
+								</tr>
+								<tr>
+									<td><label for="time">Time:</td>
+									<td><input name="time" id="time"/></td>
+								</tr>
+							</tbody>
+						</table>
+						<a href="#" class="btn btn-default">Submit</a>
+					</div>
 				</div> 
 			</div>
 		</div>

@@ -35,9 +35,62 @@
 				<?php include "php/sidebar.php";?> 
 				
 			    <div class="col-md-9">
-					<h2 id="sec0">
-					Welcome, Staff Member!
-					</h2>
+					<h1 id="sec0" style="text-align:center;">
+					Welcome, Staff Member!!
+					</h1>
+					<hr/>
+					<div class="well">
+					<h2>Clients</h2>
+						<table>
+							<tbody>
+								<tr>
+									<td><h3>Client A</h3></td>
+									<td><a href="#" class="btn btn-default">View</a></td>
+									<td><a href="#" class="btn btn-default">Edit</a></td>
+								</tr>
+								<tr>
+									<td><h3>Client B</h3></td>
+									<td><a href="#" class="btn btn-default">View</a></td>
+									<td><a href="#" class="btn btn-default">Edit</a></td>
+								</tr>
+								<tr>
+									<td><h3>Client C</h3></td>
+									<td><a href="#" class="btn btn-default">View</a></td>
+									<td><a href="#" class="btn btn-default">Edit</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="well">
+						<h2>Schedule</h2>
+						<table>
+							<tbody>
+								<tr>
+									<td>Date Range:</td>
+									<td><input /></td>
+									<td><input /></td>
+								</tr>
+								<tr>
+									<td>Service:</td>
+									<td><select>
+										<option value="0">Service</option>
+									</td>
+								</tr>
+								<tr>
+									<td>Client:</td>
+									<td><select>
+										<option value="0">All Clients</option>
+										</select>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<a href="#" class="btn btn-default">Search</a>
+					</div>
+					<div class="well">
+						<h2>Requests</h2>
+						<textarea></textarea>
+					</div>
 				</div> 
 			</div>
 		</div>
