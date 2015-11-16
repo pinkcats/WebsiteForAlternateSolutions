@@ -12,5 +12,5 @@
 		echo $ex->getMessage();
 	}
 	
-	return $rows > 0;
+	echo count($rows) > 0;
 ?>
