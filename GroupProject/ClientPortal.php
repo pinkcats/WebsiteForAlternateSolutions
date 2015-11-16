@@ -41,7 +41,7 @@
 					<article style="text-align:center;">
 						<h3>Manage Your Account</h3>
 						<div>
-							<form>
+							<form id="loginForm">
 								<label>Username:
 								<input name="userName"/></label>
 								
@@ -49,7 +49,7 @@
 								<label>Password: 
 								<input name="password"/></label>
 								<br/>
-								<a href="#" class="btn btn-default">Submit</a>
+								<a id="loginSubmit" href="#" class="btn btn-default">Submit</a>
 								<a href="#" class="btn btn-default">Register</a>
 							</form>
 						</div>
@@ -64,5 +64,6 @@
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/login.js"></script>
 	</body>
 </html>
