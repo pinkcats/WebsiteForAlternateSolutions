@@ -37,22 +37,24 @@
 			    <div class="col-md-9">
 					<h1>Client Portal</h1>
 					<hr/>
-					<article>
+					<div class="well">
+					<article style="text-align:center;">
 						<h3>Manage Your Account</h3>
 						<div>
-							<form>
-								<label>Username: <br/>
+							<form id="loginForm">
+								<label>Username:
 								<input name="userName"/></label>
 								
 								<br/>
-								<label>Password: <br/>
+								<label>Password: 
 								<input name="password"/></label>
 								<br/>
-								<a href="#" class="btn btn-default">Submit</a>
+								<a id="loginSubmit" href="#" class="btn btn-default">Submit</a>
 								<a href="#" class="btn btn-default">Register</a>
 							</form>
 						</div>
 					</article>
+					</div>
 				</div> 
 			</div>
 		</div>
@@ -62,5 +64,6 @@
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/login.js"></script>
 	</body>
 </html>
