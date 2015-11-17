@@ -20,7 +20,7 @@
 
 		<!-- Custom styles for this template -->
 		<link href="css/site.css" rel="stylesheet">
-        <title>Contact Us</title>
+        <title>Client Portal</title>
     </head>
     <body>
     
@@ -35,29 +35,26 @@
 				<?php include "php/sidebar.php";?> 
 				
 			    <div class="col-md-9">
-					<h2 id="sec0">Contact Us</h2>
+					<h1>Client Portal</h1>
 					<hr/>
-					<!--<div>
-						<img class="imageMargin" src="images/contactUs.jpg" alt="Contact Us">
-					</div>-->
-					<div>
-					<article>
-					<h3>Do you or your orgnizaiton need conflict resolution?</h3>
-					<label>Phone:<br/>
-					<input type="text"></label><br/>
-					<label>Email:<br/>
-					<input type="text"></label><br/>
-					<label>Name: <br>
-					<input type="text"></label><br>
-					<label>Subject:<br>
-					<input type="text"></label><br>
-					<label>Message:<br>
-					<textarea rows="4">
-						
-					</textarea></label><br>
-					<a href="#" class="btn btn-default">Submit</a>
-				</article>
-				</div>
+					<div class="well">
+					<article style="text-align:center;">
+						<h3>Manage Your Account</h3>
+						<div>
+							<form id="loginForm">
+								<label>Username:
+								<input name="userName"/></label>
+								
+								<br/>
+								<label>Password: 
+								<input name="password"/></label>
+								<br/>
+								<a id="loginSubmit" href="#" class="btn btn-default">Submit</a>
+								<a href="#" class="btn btn-default">Register</a>
+							</form>
+						</div>
+					</article>
+					</div>
 				</div> 
 			</div>
 		</div>
@@ -67,5 +64,6 @@
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/login.js"></script>
 	</body>
 </html>
