@@ -3,7 +3,9 @@
 	This is a template. That means you do not dev you stuff here.
 	you just copy this into a new file and start from there.
 -->
-
+<?php
+	include "php/userConfig.php";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +38,7 @@
 				
 			    <div class="col-md-9">
 					<h1 id="sec0" style="text-align:center;">
-					Welcome, Client!!
+					Welcome, <?= $userFirstName . " " . $userLastName; ?>!
 					</h1>
 					<hr/>
 					<div class="well">
@@ -120,5 +122,6 @@
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/site.js"></script>
 	</body>
 </html>
