@@ -50,7 +50,7 @@
 								<input name="password"/></label>
 								<br/>
 								<a id="loginSubmit" href="#" class="btn btn-default">Submit</a>
-								<a href="#" class="btn btn-default">Register</a>
+								<a href="register.php" class="btn btn-default">Register</a>
 							</form>
 						</div>
 					</article>
