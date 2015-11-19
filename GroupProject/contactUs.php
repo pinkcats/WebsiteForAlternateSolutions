@@ -37,27 +37,26 @@
 			    <div class="col-md-9">
 					<h2 id="sec0">Contact Us</h2>
 					<hr/>
-					<!--<div>
-						<img class="imageMargin" src="images/contactUs.jpg" alt="Contact Us">
-					</div>-->
 					<div>
-					<article>
-					<h3>Do you or your orgnizaiton need conflict resolution?</h3>
-					<label>Phone:<br/>
-					<input type="text"></label><br/>
-					<label>Email:<br/>
-					<input type="text"></label><br/>
-					<label>Name: <br>
-					<input type="text"></label><br>
-					<label>Subject:<br>
-					<input type="text"></label><br>
-					<label>Message:<br>
-					<textarea rows="4">
-						
-					</textarea></label><br>
-					<a href="#" class="btn btn-default">Submit</a>
-				</article>
-				</div>
+						<article>
+							<h3>Do you or your orgnizaiton need conflict resolution?</h3>
+							<form>
+								<label>Name: <br>
+								<input type="text" name="name"></label><br>
+								<label>Phone:<br/>
+								<input type="text" name="phone"></label><br/>
+								<label>Email:<br/>
+								<input type="text" name="email"></label><br/>
+								<label>Subject:<br>
+								<input type="text" name="subject"></label><br>
+								<label>Message:<br>
+								<textarea rows="4" name="message">
+									
+								</textarea></label><br>
+								<a id="contactUsSubmit" href="#" class="btn btn-default">Submit</a>
+							</form>
+						</article>
+					</div>
 				</div> 
 			</div>
 		</div>
