@@ -1,9 +1,6 @@
-
-<!--
-	This is a template. That means you do not dev you stuff here.
-	you just copy this into a new file and start from there.
--->
-
+<?php
+	include "php/staffConfig.php";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +33,7 @@
 				
 			    <div class="col-md-9">
 					<h1 id="sec0" style="text-align:center;">
-					Welcome, Staff Member!!
+					Welcome, <?= $staffFirstName . " " . $staffLastName; ?>
 					</h1>
 					<hr/>
 					<div class="well">

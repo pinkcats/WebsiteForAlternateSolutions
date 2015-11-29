@@ -1,8 +1,3 @@
-
-<!--
-	This is a template. That means you do not dev you stuff here.
-	you just copy this into a new file and start from there.
--->
 <?php
 	include "php/userConfig.php";
 ?>

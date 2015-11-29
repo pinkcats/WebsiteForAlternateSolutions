@@ -7,9 +7,10 @@ $(document).ready( function() {
 			data: form.serialize(),
 			dataType: "json",
 			success: function(response) {
-				console.log(response.success);
+				console.log(response);
 				if(response.success){
-					window.location = "clientHome.php";
+					var desiredPage = (response.isStaff == 1) ? "staffHome.php" : "clientHome.php";
+					window.location = desiredPage;
 				}
 			}
 		});  
