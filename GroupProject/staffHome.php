@@ -103,33 +103,55 @@
 					<div class="well">
 						<article>
 							<h2>Sidebar Content</h2>
-							<a href="#" class="btn btn-default">Add</a>
-							<table class="table">
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addSidebarLinkModal">
+								Add
+							</button>
+							<table class="table table-striped table-hover">
 								<thead>
 									<tr>
-										<td>Title</td>
-										<td>Link</td>
-										<td></td>
-										<td></td>
-										<td></td>
+										<th>Title</th>
+										<th>Link</th>
+										<th></th>
+										<th></th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach($links as $link){ ?>
-										<tr>
-											<td><?= $link['title']; ?></td>
-											<td><?= $link['link'];?></td>
-											<td><a href="#" class="btn btn-default">Archive</a></td>
-											<td><a href="#" class="btn btn-default">Edit</a></td>
-											<td><a href="#" class="btn btn-default">Delete</a></td>
-										</tr>
-									<?php } ?>
+									<tr>
+										<td>Thing</td>
+										<td>http://thing.com</td>
+										<td class="text-right"><a href="#" class="btn btn-default">Archive</a></td>
+										<td class="text-right"><a href="#" class="btn btn-default">Edit</a></td>
+										<td class="text-right"><a href="#" class="btn btn-default">Delete</a></td>
+									</tr>
+									
 								</tbody>
 							</table>
 						</article>
 					</div>
 				</div> 
 			</div>
+		</div>
+
+		<!-- Modals -->
+		<div class="modal" id="addSidebarLinkModal">
+  			<div class="modal-dialog">
+    			<div class="modal-content">
+      				<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        					<span class="glyphicon glyphicon glyphicon-remove"></span>
+        				</button>
+        				<h4 class="modal-title">Add Sidebar Link</h4>
+      				</div>
+      				<div class="modal-body">
+        				<p>asdfsfd</p>
+      				</div>
+      				<div class="modal-footer">
+        				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        				<button type="button" class="btn btn-primary">Save changes</button>
+      				</div>
+    			</div>
+  			</div>
 		</div>
 
 		<!-- Footer Include -->

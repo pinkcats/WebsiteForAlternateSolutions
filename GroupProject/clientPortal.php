@@ -32,7 +32,7 @@
 				<?php include "php/sidebar.php";?> 
 				
 			    <div class="col-md-9">
-					<h1>Client Portal</h1>
+					<h1>Portal</h1>
 					<hr/>
 					<div class="well">
 					<article style="text-align:center;">

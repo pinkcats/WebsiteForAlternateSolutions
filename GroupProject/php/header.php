@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
 	<div class="navbar-header">
@@ -17,20 +20,21 @@
 			<li><a href="clients.php">Clients</a></li>
 			<li><a href="staff.php">Staff</a></li>
 			<li><a href="contactUs.php">Contact Us</a></li>
-			<li><a href="clientPortal.php">Client Portal</a></li>
-			<!--<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-				<ul class="dropdown-menu">
-				<li><a href="#">Action</a></li>
-				<li><a href="#">Another action</a></li>
-				<li><a href="#">Something else here</a></li>
-				<li role="separator" class="divider"></li>
-				<li class="dropdown-header">Nav header</li>
-				<li><a href="#">Separated link</a></li>
-				<li><a href="#">One more separated link</a></li>
-				</ul>
-			</li>
-			-->
+			<?php
+				if(isset($_SESSION["userInformation"])) {
+					?>
+					<li class="dropdown">
+						<a href="clientPortal.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Portal <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+						<li><a href="clientPortal.php">Home</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="clientPortal.php?action=logout">Logout</a></li>
+						</ul>
+					</li>
+					<?php
+				} else { ?>
+					<li><a href="clientPortal.php">Portal</a></li>
+				<?php } ?>
 		</ul>
 	</div>
 	</div>
