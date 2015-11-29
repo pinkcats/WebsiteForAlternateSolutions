@@ -36,7 +36,7 @@
 				
 			    <div class="col-md-9">
 					<h1 id="sec0" style="text-align:center;">
-					Welcome, Staff Member!!
+					Welcome, <?= $userFirstName ." ". $userLastName; ?>!
 					</h1>
 					<hr/>
 					<div class="well">
@@ -55,37 +55,49 @@
 					</div>
 					<div class="well">
 						<h2>Schedule</h2>
-						<form>
-							<table class="table">
-								<tbody>
-									<tr>
-										<td>Date Range:</td>
-										<td><input /></td>
-										<td><input /></td>
-									</tr>
-									<tr>
-										<td>Service:</td>
-										<td>
-											<select>
-											<?php foreach($services as $service){?>
-												<option value="0"><?= $service['name']; ?></option>
+						<article>
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label for="startDate" class="col-lg-2 control-label">Start Date:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="startDate" name="startDate" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="endDate" class="col-lg-2 control-label">End Date:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="endDate" name="endDate"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="service" class="col-lg-2 control-label">Service:</label>
+									<div class="col-lg-10">
+										<select id="service" name="service" class="form-control">
+											<option value="-1">Select a Service</option>
+											<?php foreach($services as $service){ ?>
+												<option><?= $service['name']; ?></option>
 											<?php } ?>
-										</td>
-									</tr>
-									<tr>
-										<td>Client:</td>
-										<td>
-											<select>
-												<?php foreach($clients as $client){ ?> 
-													<option value="0"><?= $client['name']; ?></option>
-												<?php } ?>
-											</select>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-							<a href="#" class="btn btn-default">Search</a>
-						</form>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="client" class="col-lg-2 control-label">Client:</label>
+									<div class="col-lg-10">
+										<select id="client" name="client" class="form-control">
+											<option value="-1">Select a Client</option>
+											<?php foreach($clients as $client){ ?> 
+												<option><?= $client['name']; ?></option>
+											<?php } ?>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-lg-10 col-lg-offset-2">
+										<a href="#" class="btn btn-default">Search</a>
+									</div>
+								</div>
+							</form>
+						</article>
 					</div>
 					<div class="well">
 						<h2>Requests</h2>
@@ -112,9 +124,9 @@
 									<tr>
 										<td>Title</td>
 										<td>Link</td>
-										<td></td>
-										<td></td>
-										<td></td>
+										<td>Archive</td>
+										<td>Edit</td>
+										<td>Delete</td>
 									</tr>
 								</thead>
 								<tbody>

@@ -155,7 +155,7 @@
 									Service:</label>
 									<div class="col-lg-10">
 										<select id="service" name="service" class="form-control">
-											<option value="0">Select a Service</option>
+											<option value="-1">Select a Service</option>
 											<?php foreach($services as $service){ ?>
 												<option><?= $service['name']; ?></option>
 											<?php } ?>
