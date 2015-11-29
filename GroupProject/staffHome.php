@@ -41,55 +41,95 @@
 					<hr/>
 					<div class="well">
 					<h2>Clients</h2>
-						<table>
+						<table class="table">
 							<tbody>
-								<tr>
-									<td><h3>Client A</h3></td>
-									<td><a href="#" class="btn btn-default">View</a></td>
-									<td><a href="#" class="btn btn-default">Edit</a></td>
-								</tr>
-								<tr>
-									<td><h3>Client B</h3></td>
-									<td><a href="#" class="btn btn-default">View</a></td>
-									<td><a href="#" class="btn btn-default">Edit</a></td>
-								</tr>
-								<tr>
-									<td><h3>Client C</h3></td>
-									<td><a href="#" class="btn btn-default">View</a></td>
-									<td><a href="#" class="btn btn-default">Edit</a></td>
-								</tr>
+								<?php foreach($clients as $client){ ?>
+									<tr>
+										<td><h3><?= $client['name'];?></h3></td>
+										<td><a href="#" class="btn btn-default">View</a></td>
+										<td><a href="#" class="btn btn-default">Edit</a></td>
+									</tr>
+								<?php } ?>
 							</tbody>
 						</table>
 					</div>
 					<div class="well">
 						<h2>Schedule</h2>
-						<table>
-							<tbody>
-								<tr>
-									<td>Date Range:</td>
-									<td><input /></td>
-									<td><input /></td>
-								</tr>
-								<tr>
-									<td>Service:</td>
-									<td><select>
-										<option value="0">Service</option>
-									</td>
-								</tr>
-								<tr>
-									<td>Client:</td>
-									<td><select>
-										<option value="0">All Clients</option>
-										</select>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<a href="#" class="btn btn-default">Search</a>
+						<form>
+							<table class="table">
+								<tbody>
+									<tr>
+										<td>Date Range:</td>
+										<td><input /></td>
+										<td><input /></td>
+									</tr>
+									<tr>
+										<td>Service:</td>
+										<td>
+											<select>
+											<?php foreach($services as $service){?>
+												<option value="0"><?= $service['name']; ?></option>
+											<?php } ?>
+										</td>
+									</tr>
+									<tr>
+										<td>Client:</td>
+										<td>
+											<select>
+												<?php foreach($clients as $client){ ?> 
+													<option value="0"><?= $client['name']; ?></option>
+												<?php } ?>
+											</select>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<a href="#" class="btn btn-default">Search</a>
+						</form>
 					</div>
 					<div class="well">
 						<h2>Requests</h2>
-						<textarea></textarea>
+						<table class="table">
+							<tbody>
+							<?php foreach($requests as $request){?>
+								<tr>
+									<td><?= $request['name'];?></td>
+									<td><?= $request['client'];?></td>
+									<td><?= $request['date'];?></td>
+									<td><?= $request['time']?></td>
+									<td></td>
+								</tr>
+							<?php } ?>
+							</tbody>
+						</table>
+					</div>
+					<div class="well">
+						<article>
+							<h2>Sidebar Content</h2>
+							<a href="#" class="btn btn-default">Add</a>
+							<table class="table">
+								<thead>
+									<tr>
+										<td>Title</td>
+										<td>Link</td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</thead>
+								<tbody>
+									<?php foreach($links as $link){ ?>
+										<tr>
+											<td><?= $link['title']; ?></td>
+											<td><?= $link['link'];?></td>
+											<td><a href="#" class="btn btn-default">Archive</a></td>
+											<td><a href="#" class="btn btn-default">Edit</a></td>
+											<td><a href="#" class="btn btn-default">Delete</a></td>
+										</tr>
+									<?php } ?>
+								</tbody>
+							</table>
+						</article>
 					</div>
 				</div> 
 			</div>
