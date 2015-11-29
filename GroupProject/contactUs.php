@@ -40,7 +40,7 @@
 					<div>
 						<article>
 							<h3>Do you or your orgnizaiton need conflict resolution?</h3>
-							<form>
+							<form id="contactUsForm">
 								<label>Name: <br>
 								<input type="text" name="name"></label><br>
 								<label>Phone:<br/>
@@ -50,10 +50,8 @@
 								<label>Subject:<br>
 								<input type="text" name="subject"></label><br>
 								<label>Message:<br>
-								<textarea rows="4" name="message">
-									
-								</textarea></label><br>
-								<a id="contactUsSubmit" href="#" class="btn btn-default">Submit</a>
+								<textarea rows="4" name="message"></textarea></label><br>
+								<a id="contactUsSubmit" class="btn btn-default">Submit</a>
 							</form>
 						</article>
 					</div>
@@ -67,5 +65,6 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/site.js"></script>
+		<script src="js/contactUs.js"></script>
 	</body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 	header('Content-Type', 'application/json');
-	$name = $_POST["user"];
+	$name = $_POST["name"];
 	$phone = $_POST["phone"];
 	$email = $_POST["email"];
 	$subject = $_POST["subject"];
@@ -9,14 +9,33 @@
 	include_once "../dbConfig.php";
 	$contactUsResponse = array("success" => FALSE);
 	try {
-		$query = $db->prepare("");
+		$query = $db->prepare("
+			INSERT INTO 
+				contactUs
+				(
+					Id,
+					name,
+					phone,
+					email,
+					subject,
+					message
+				)
+			VALUES 
+			 	(
+			 		NULL,
+			 		?,
+			 		?,
+			 		?,
+			 		?,
+			 		?
+		 		);
+		");
 		$query->execute(array($name, $phone, $email, $subject, $message));
-		$rows = $query->fetchAll(PDO::FETCH_ASSOC);
 		if($query->rowCount() == 1){
 			$contactUsResponse['success'] = TRUE;
 		}
 	} catch(PDOException $ex) {
-		echo "An Error occured!"; 
+		echo "Test"; 
 		echo $ex->getMessage();
 	}
 	

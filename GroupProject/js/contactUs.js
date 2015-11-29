@@ -1,13 +1,14 @@
 $(document).ready( function() {
-    
+    var contactUsForm = $('#contactUsForm');
     $("#contactUsSubmit").on("click", function() {
 		$.ajax( {
 			type: "POST",
 			url: "php/controller/contactUsController.php",
-			data: form.serialize(),
+			data: contactUsForm.serialize(),
 			dataType: "json",
 			success: function(response) {
-				console.log(response.success);
+				document.getElementById("contactUsForm").reset();
+				alert("Success");
 			}
 		});  
 	});
