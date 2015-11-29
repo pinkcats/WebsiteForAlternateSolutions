@@ -38,75 +38,146 @@
 					<hr/>
 					<div class="well">
 						<article>
-						<h2>Contact Information</h2>
-						<table>
-							<tbody>
-								<tr>
-									<td><label for="firstName">First Name:</label></td>
-									<td><input name="firstName"/></td>
-								</tr>
-								<tr>
-									<td><label for="lastName">Last Name:</label></td>
-									<td><input name="lastName"/></td>
-								</tr>
-								<tr>
-									<td><label for="email">Email:</label></td>
-									<td><input name="email"/></td>
-								</tr>
-								<tr>
-									<td><label for="phoneNumber">Phone Number:</label></td>
-									<td><input name="phoneNumber"/></td>
-								</tr>
-								<tr>
-									<td><label for="address">Address:</label></td>
-									<td><input name="address"/></td>
-								</tr>
-							</tbody>
-						</table>
-						<a href="#" class="btn btn-default">Save</a>
+							<h3>Contact Information</h3>
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label for="firstName" class="col-lg-2 control-label">
+									First Name:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="firstName" name="firstName"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="lastName" class="col-lg-2 control-label">
+									Last Name:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="lastName" name="lastName"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="email" class="col-lg-2 control-label">
+									 Email:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="email" name="email"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="phone" class="col-lg-2 control-label">
+									Phone Number:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="phone" name="phone"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="address" class="col-lg-2 control-label">
+									Address:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="address" name="address"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="city" class="col-lg-2 control-label">
+									City:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="city" name="city"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="state" class="col-lg-2 control-label">
+									State:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="state" name="state"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="zipcode" class="col-lg-2 control-label">
+									Zipcode:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="zipcode" name="zipcode"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-lg-10 col-lg-offset-2">
+										<a href="#" class="btn btn-default">Save</a>
+									</div>
+								</div>
+							</form>
 						</article>
 					</div>
 					<div class="well">
 						<article>
-							<h2>Schedule of Services</h2>
-							<table>
-								<tbody>
-									<tr>
-										<td><label for="startDate">Start Date:</label></td>
-										<td><input name="startDate"/></td>
-									</tr>
-									<tr>
-										<td><label name="endDate">End Date: </label></td>
-										<td><input name="endDate" id="endDate"/></td>
-									</tr>
-								</tbody>
-							</table>
-							<a href="#" class="btn btn-default">Submit</a><br/>
-							<textarea></textarea>
+							<h3>Schedule of Services</h3>
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label for="startDate" class="col-lg-2 control-label">
+									Start Date:
+									</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="startDate" name="startDate"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="endDate" class="col-lg-2 control-label">
+									End Date:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="endDate" name="endDate"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-lg-10 col-lg-offset-2">
+										<a href="#" class="btn btn-default">Submit</a>
+									</div>
+								</div>
+								<table class="table">
+									<tbody>
+										<?php foreach($services as $service){ ?> 
+											<tr>
+												<td><?= $service['name']; ?></td>
+												<td><a href="#" class="btn btn-default">Schedule</a></td>
+											</tr>
+										<?php } ?>
+									</tbody>
+								</table>
+							</form>
 						</article>
 					</div>
 					<div class="well">
-						<h2>Request Service</h2>
-						<table>
-							<tbody>
-								<tr>
-									<td><label for="service">Serivce:</label></td>
-									<td><select name="service" id="service">
-										<option value="0">The services</option>
+						<article>
+							<h3>Request Service</h3>
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label for="service" class="col-lg-2 control-label">
+									Service:</label>
+									<div class="col-lg-10">
+										<select id="service" name="service" class="form-control">
+											<option value="0">Select a Service</option>
+											<?php foreach($services as $service){ ?>
+												<option><?= $service['name']; ?></option>
+											<?php } ?>
 										</select>
-									</td>
-								</tr>
-								<tr>
-									<td><label for="date">Date:</label></td>
-									<td><input name="date" id="date"/></td>
-								</tr>
-								<tr>
-									<td><label for="time">Time:</td>
-									<td><input name="time" id="time"/></td>
-								</tr>
-							</tbody>
-						</table>
-						<a href="#" class="btn btn-default">Submit</a>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="date" class="col-lg-2 control-label">
+									Date:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="date" name="date"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="time" class="col-lg-2 control-label">
+									Time:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="time" name="time"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-lg-10 col-lg-offset-2">
+										<a href="#" class="btn btn-default">Submit</a>
+									</div>
+								</div>
+							</form>
+						</article>
 					</div>
 				</div> 
 			</div>
