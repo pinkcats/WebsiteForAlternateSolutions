@@ -43,14 +43,15 @@
 						<div>
 							<form id="loginForm">
 								<label>Username:
-								<input name="userName"/></label>
+								<input name="userName" id="username"/></label>
 								
 								<br/>
 								<label>Password: 
-								<input name="password"/></label>
+								<input name="password" id="password"/></label>
 								<br/>
 								<a id="loginSubmit" href="#" class="btn btn-default">Submit</a>
-								<a href="register.php" class="btn btn-default">Register</a>
+								<a href="register.php" class="btn btn-default">Register</a><br/>
+								<span id="loginError" class="error">The Username or Password is invalid.</span>
 							</form>
 						</div>
 					</article>
