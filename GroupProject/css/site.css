@@ -38,8 +38,24 @@ code {
   font-size: 80%;
 }
 
+/*css for logo size*/
 nav img {
 	width:125px;
 	height:54px;
 	margin-top:-15px;
 }
+
+/*Kiley changes so buttons more accurately match logo red*/
+.btn-primary {
+	background-color: #b3003b;
+	border-color: #b3003b;
+}
+.btn-primary:hover{
+	background-color: #cc0000;
+	border-color: #cc0000;
+}
+
+#leftCol a{
+	color:#b3003b;
+}
+/*end of weird kiley changes*/

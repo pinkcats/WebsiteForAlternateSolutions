@@ -46,8 +46,8 @@
 								<?php foreach($clients as $client){ ?>
 									<tr>
 										<td><h3><?= $client['name'];?></h3></td>
-										<td><a href="#" class="btn btn-default">View</a></td>
-										<td><a href="#" class="btn btn-default">Edit</a></td>
+										<td><a href="#" class="btn btn-primary">View</a></td>
+										<td><a href="#" class="btn btn-primary">Edit</a></td>
 									</tr>
 								<?php } ?>
 							</tbody>
@@ -93,7 +93,7 @@
 								</div>
 								<div class="form-group">
 									<div class="col-lg-10 col-lg-offset-2">
-										<a href="#" class="btn btn-default">Search</a>
+										<a href="#" class="btn btn-primary">Search</a>
 									</div>
 								</div>
 							</form>
@@ -118,7 +118,7 @@
 					<div class="well">
 						<article>
 							<h2>Sidebar Content</h2>
-							<a href="#" class="btn btn-default">Add</a>
+							<a href="#" class="btn btn-primary">Add</a>
 							<table class="table">
 								<thead>
 									<tr>
@@ -134,9 +134,9 @@
 										<tr>
 											<td><?= $link['title']; ?></td>
 											<td><?= $link['link'];?></td>
-											<td><a href="#" class="btn btn-default">Archive</a></td>
-											<td><a href="#" class="btn btn-default">Edit</a></td>
-											<td><a href="#" class="btn btn-default">Delete</a></td>
+											<td><a href="#" class="btn btn-primary">Archive</a></td>
+											<td><a href="#" class="btn btn-primary">Edit</a></td>
+											<td><a href="#" class="btn btn-primary">Delete</a></td>
 										</tr>
 									<?php } ?>
 								</tbody>
