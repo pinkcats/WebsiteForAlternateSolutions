@@ -37,3 +37,9 @@ body > .container {
 code {
   font-size: 80%;
 }
+
+nav img {
+	width:125px;
+	height:54px;
+	margin-top:-15px;
+}
