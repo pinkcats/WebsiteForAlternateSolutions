@@ -37,22 +37,24 @@
 			    <div class="col-md-9">
 					<h2 id="sec0">Contact Us</h2>
 					<hr/>
-					<div>
+					<div class="well">
 						<article>
 							<h3>Do you or your orgnizaiton need conflict resolution?</h3>
 							<form id="contactUsForm">
 								<label>Name: <br>
-								<input type="text" name="name"></label><br>
+								<input type="text" id="contactUsName" name="name"></label><br>
 								<label>Phone:<br/>
-								<input type="text" name="phone"></label><br/>
+								<input type="text" id="contactUsPhone" name="phone"></label><br/>
 								<label>Email:<br/>
-								<input type="text" name="email"></label><br/>
+								<input type="text" id="contactUsEmail" name="email"></label><br/>
 								<label>Subject:<br>
-								<input type="text" name="subject"></label><br>
+								<input type="text" id="contactUsSubject" name="subject"></label><br>
 								<label>Message:<br>
-								<textarea rows="4" name="message"></textarea></label><br>
+								<textarea rows="4" id="contactUsMessage" name="message"></textarea></label><br>
 								<a id="contactUsSubmit" class="btn btn-default">Submit</a>
+								<span id="contactUsError">Your form is invalid.</span>
 							</form>
+							
 						</article>
 					</div>
 				</div> 
