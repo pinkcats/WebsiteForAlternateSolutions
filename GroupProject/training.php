@@ -9,23 +9,23 @@
 		<meta name="author" content="">
 		<!--<link rel="icon" href="../../favicon.ico">-->
 		<!-- Bootstrap core CSS -->
-		<link href="../css/bootstrap.css" rel="stylesheet">
+		<link href="css/bootstrap.css" rel="stylesheet">
 
 		<!-- Custom styles for this template -->
-		<link href="../css/site.css" rel="stylesheet">
+		<link href="css/site.css" rel="stylesheet">
         <title>Services | Training</title>
     </head>
     <body>
     
 		<!-- Header Include -->
-		<?php include "../php/header.php"; ?>
+		<?php include "php/header.php"; ?>
 		
 		<!-- Begin page content -->
 		<div class="container">
 		    <div class="row">
 			
 				<!-- sidebar Include -->
-				<?php include "../php/sidebar.php";?> 
+				<?php include "php/sidebar.php";?> 
 				
 			    <div class="col-md-9">
 					<h2 id="sec0">Training</h2>
@@ -67,10 +67,10 @@
 		</div>
 
 		<!-- Footer Include -->
-		<?php include "../php/footer.php"; ?>
+		<?php include "php/footer.php"; ?>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="../js/bootstrap.min.js"></script>
-		<script src="../js/site.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/site.js"></script>
 	</body>
 </html>

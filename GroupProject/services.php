@@ -30,7 +30,7 @@
 			    <div class="col-md-9">
 					<h2 id="sec0">Training</h2>
 					<article>
-						<h3><a href="services/mediation.php">Mediation</a></h3>
+						<h3><a href="mediation.php">Mediation</a></h3>
 						<p>
 							Mediation is a voluntary process in which parties choose to work together with an impartial third party (mediator) to resolve their conflict in a mutually beneficial way.  
 							It is a confidential, uniquely flexible process that can be tailored to meet a wide variety of situations.
@@ -47,7 +47,7 @@
 						</ul>
 					</article>
 					<article>
-						<h3><a href="services/facilitation.php">Facilitation Services</a></h3>
+						<h3><a href="facilitation.php">Facilitation Services</a></h3>
 						<p>
 							A process in which an impartial third party (facilitator) works with a group by helping group members communicate and problem-solve productively, resulting in high quality decisions.  
 							The facilitator provides structure so the group can address the content.
@@ -58,7 +58,7 @@
 						</ul>
 					</article>
 					<article>
-						<h3><a href="services/consultation.php">Consultation</a></h3>
+						<h3><a href="consultation.php">Consultation</a></h3>
 						<p>
 							In order to effectively address organizational needs, an organization must first understand the scope of the need. 
 							A consultant with specific expertise works with a client to identify the problem, recommend possible solutions/services, and identify available resources.  
@@ -74,7 +74,7 @@
 						</ul>
 					</article>
 					<article>
-						<h3><a href="services/coaching.php">Coaching</a></h3>
+						<h3><a href="coaching.php">Coaching</a></h3>
 						<p>
 							Coaching is a learning partnership for generating creative, purposeful action toward one person's goals and desires.  
 							It is an effective means to help people improve job performance, build leadership skills, and remove obstacles blocking their path to success.
@@ -86,7 +86,7 @@
 						</ul>
 					</article>
 					<article>
-						<h3><a href="services/training.php">Training</a></h3>
+						<h3><a href="training.php">Training</a></h3>
 						<p>
 							Mediation is a voluntary process in which parties choose to work together with an impartial third party (mediator) to resolve their conflict in a mutually beneficial way.  
 							It is a confidential, uniquely flexible process that can be tailored to meet a wide variety of situations.
