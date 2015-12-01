@@ -10,3 +10,5 @@
 
 <!-- Custom styles for this template -->
 <link href="css/site.css" rel="stylesheet">
+
+<link href="./images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
