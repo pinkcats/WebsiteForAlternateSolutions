@@ -37,27 +37,26 @@
 			    <div class="col-md-9">
 					<h2 id="sec0">Contact Us</h2>
 					<hr/>
-					<!--<div>
-						<img class="imageMargin" src="images/contactUs.jpg" alt="Contact Us">
-					</div>-->
-					<div>
-					<article>
-					<h3>Do you or your orgnizaiton need conflict resolution?</h3>
-					<label>Phone:<br/>
-					<input type="text"></label><br/>
-					<label>Email:<br/>
-					<input type="text"></label><br/>
-					<label>Name: <br>
-					<input type="text"></label><br>
-					<label>Subject:<br>
-					<input type="text"></label><br>
-					<label>Message:<br>
-					<textarea rows="4">
-						
-					</textarea></label><br>
-					<a href="#" class="btn btn-default">Submit</a>
-				</article>
-				</div>
+					<div class="well">
+						<article>
+							<h3>Do you or your orgnizaiton need conflict resolution?</h3>
+							<form id="contactUsForm">
+								<label>Name: <br>
+								<input type="text" id="contactUsName" name="name"></label><br>
+								<label>Phone:<br/>
+								<input type="text" id="contactUsPhone" name="phone"></label><br/>
+								<label>Email:<br/>
+								<input type="text" id="contactUsEmail" name="email"></label><br/>
+								<label>Subject:<br>
+								<input type="text" id="contactUsSubject" name="subject"></label><br>
+								<label>Message:<br>
+								<textarea rows="4" id="contactUsMessage" name="message"></textarea></label><br>
+								<a id="contactUsSubmit" class="btn btn-default">Submit</a>
+								<span id="contactUsError">Your form is invalid.</span>
+							</form>
+							
+						</article>
+					</div>
 				</div> 
 			</div>
 		</div>
@@ -68,5 +67,6 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/site.js"></script>
+		<script src="js/contactUs.js"></script>
 	</body>
 </html>
