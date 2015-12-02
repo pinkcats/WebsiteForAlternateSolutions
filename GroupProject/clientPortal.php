@@ -35,22 +35,29 @@
 					<h1>Portal</h1>
 					<hr/>
 					<div class="well">
-					<article style="text-align:center;">
-						<h3>Manage Your Account</h3>
-						<div>
-							<form id="loginForm">
-								<label>Username:
-								<input name="userName" id="username"/></label>
-								
-								<br/>
-								<label>Password: 
-								<input name="password" id="password"/></label>
-								<br/>
-								<a id="loginSubmit" href="#" class="btn btn-default">Submit</a>
-								<a href="register.php" class="btn btn-default">Register</a><br/>
-								<span id="loginError" class="error">The Username or Password is invalid.</span>
+					<article>
+						<h3 class="col-lg-10 col-lg-offset-2">Manage Your Account</h3>
+							<form id="loginForm" class="form-horizontal">
+								<div class="form-group">
+									<label for="username" class="col-lg-2 control-label">Username:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="username" name="userName"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="password" class="col-lg-2 control-label">Password:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="password" name="password"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-lg-10 col-lg-offset-2">
+										<a href="#" class="btn btn-default" id="loginSubmit">Submit</a>
+										<a href="register.php" class="btn btn-default">Register</a>
+									</div>
+								</div>
+								<span id="loginError"> The Username or password is invalid.</span>
 							</form>
-						</div>
 					</article>
 					</div>
 				</div> 
