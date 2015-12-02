@@ -73,21 +73,21 @@
     							<div class="form-group">
       								<label for="zipCode" class="col-lg-2 control-label">Zip Code</label>
       								<div class="col-lg-10">
-        								<input type="text" class="form-control" id="zipCode" name="zipCode">
+        								<input type="text" class="form-control" id="zipCode" data-type="zipCode" name="zipCode">
       								</div>
     							</div>
 
     							<div class="form-group">
       								<label for="emailAddress" class="col-lg-2 control-label">Email Address</label>
       								<div class="col-lg-10">
-        								<input type="text" class="form-control" id="emailAddress" name="emailAddress">
+        								<input type="text" class="form-control" id="emailAddress" data-type="emailAddress" name="emailAddress">
       								</div>
     							</div>
 
     							<div class="form-group">
       								<label for="phoneNumber" class="col-lg-2 control-label">Phone Number</label>
       								<div class="col-lg-10">
-        								<input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
+        								<input type="text" class="form-control" id="phoneNumber" data-type="phoneNumber" name="phoneNumber">
       								</div>
     							</div>
 
@@ -112,7 +112,7 @@
     							<div class="form-group">
       								<label for="password" class="col-lg-2 control-label">Password</label>
       								<div class="col-lg-10">
-        								<input type="text" class="form-control" id="password" name="password">
+        								<input type="text" class="form-control" id="password" data-type="password" data-compare="passwordConfirmation" name="password">
       								</div>
     							</div>
 
