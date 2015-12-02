@@ -40,19 +40,47 @@
 					<div class="well">
 						<article>
 							<h3>Do you or your orgnizaiton need conflict resolution?</h3>
-							<form id="contactUsForm">
-								<label>Name: <br>
-								<input type="text" id="contactUsName" name="name"></label><br>
-								<label>Phone:<br/>
-								<input type="text" id="contactUsPhone" name="phone"></label><br/>
-								<label>Email:<br/>
-								<input type="text" id="contactUsEmail" name="email"></label><br/>
-								<label>Subject:<br>
-								<input type="text" id="contactUsSubject" name="subject"></label><br>
-								<label>Message:<br>
-								<textarea rows="4" id="contactUsMessage" name="message"></textarea></label><br>
-								<a id="contactUsSubmit" class="btn btn-default">Submit</a>
-								<span id="contactUsError">Your form is invalid.</span>
+							<form id="contactUsForm" class="form-horizontal">
+								<div class="form-group">
+									<label for="contactUsName" class="col-lg-2 control-label">
+										Name: </label>
+									<div class="col-lg-10">
+										<input type="text" id="contactUsName" name="name" class="form-control"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="contactUsPhone" class="col-lg-2 control-label">
+										Phone:</label>
+									<div class="col-lg-10">
+										<input type="text" id="contactUsPhone" name="phone" class="form-control"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="contactUsEmail" class="col-lg-2 control-label">
+										Email:
+									</label>
+									<div class="col-lg-10">
+										<input type="text" id="contactUsEmail"  name="email" class="form-control"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="contactUsSubject" class="col-lg-2 control-label">Subject:</label>
+									<div class="col-lg-10">
+										<input type="text" id="contactUsSubject" name="subject" class="form-control"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="contactUsMessage" class="col-lg-2 control-label">Message:</label>
+									<div class="col-lg-10">
+										<textarea id="contactUsMessage" name="message" class="form-control"></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-lg-10 col-lg-offset-2">
+										<a id="contactUsSubmit" class="btn btn-default">Submit</a>
+										<span id="contactUsError">Your form is invalid.</span>
+									</div>
+								</div>
 							</form>
 							
 						</article>
