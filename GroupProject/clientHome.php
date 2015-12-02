@@ -98,7 +98,7 @@
 								</div>
 								<div class="form-group">
 									<div class="col-lg-10 col-lg-offset-2">
-										<a href="#" class="btn btn-primary">Save</a>
+										<a href="#" class="btn btn-default">Save</a>
 									</div>
 								</div>
 							</form>
@@ -125,7 +125,7 @@
 								</div>
 								<div class="form-group">
 									<div class="col-lg-10 col-lg-offset-2">
-										<a href="#" class="btn btn-primary">Submit</a>
+										<a href="#" class="btn btn-default">Submit</a>
 									</div>
 								</div>
 								<table class="table">
@@ -133,7 +133,7 @@
 										<?php foreach($services as $service){ ?> 
 											<tr>
 												<td><?= $service['name']; ?></td>
-												<td><a href="#" class="btn btn-primary">Schedule</a></td>
+												<td><a href="#" class="btn btn-default">Schedule</a></td>
 											</tr>
 										<?php } ?>
 									</tbody>
@@ -173,7 +173,7 @@
 								</div>
 								<div class="form-group">
 									<div class="col-lg-10 col-lg-offset-2">
-										<a href="#" class="btn btn-primary">Submit</a>
+										<a href="#" class="btn btn-default">Submit</a>
 									</div>
 								</div>
 							</form>

@@ -43,8 +43,8 @@
 								<?php foreach($clients as $client){ ?>
 									<tr>
 										<td><h3><?= $client['name'];?></h3></td>
-										<td><a href="#" class="btn btn-primary">View</a></td>
-										<td><a href="#" class="btn btn-primary">Edit</a></td>
+										<td><a href="#" class="btn btn-default">View</a></td>
+										<td><a href="#" class="btn btn-default">Edit</a></td>
 									</tr>
 								<?php } ?>
 							</tbody>
@@ -90,7 +90,7 @@
 								</div>
 								<div class="form-group">
 									<div class="col-lg-10 col-lg-offset-2">
-										<a href="#" class="btn btn-primary">Search</a>
+										<a href="#" class="btn btn-default">Search</a>
 									</div>
 								</div>
 							</form>
@@ -115,7 +115,7 @@
 					<div class="well">
 						<article>
 							<h2>Sidebar Content</h2>
-							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addSidebarLinkModal">
+							<button type="button" class="btn btn-default" data-toggle="modal" data-target="#addSidebarLinkModal">
 								Add
 							</button>
 							<table class="table table-striped table-hover">
@@ -160,7 +160,7 @@
       				</div>
       				<div class="modal-footer">
         				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        				<button type="button" class="btn btn-primary">Save changes</button>
+        				<button type="button" class="btn btn-default">Save changes</button>
       				</div>
     			</div>
   			</div>

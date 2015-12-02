@@ -45,11 +45,11 @@ nav img {
 }
 
 /*Kiley changes so buttons more accurately match logo red*/
-.btn-primary {
+.btn-default {
 	background-color: #b3003b;
 	border-color: #b3003b;
 }
-.btn-primary:hover{
+.btn-default:hover{
 	background-color: #cc0000;
 	border-color: #cc0000;
 }
@@ -65,4 +65,8 @@ nav img {
 
 #contactUsError{
 	color: #b3003b;
+}
+
+.invalid{
+  background-color: #b3003b;
 }
