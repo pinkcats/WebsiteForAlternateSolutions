@@ -1,6 +1,15 @@
 <?php
 	include "php/userConfig.php";
 	include_once "php/dbConfig.php";
+	try {
+		$query = $db->prepare("SELECT u.first_name, u.last_name, u.email, u.phone_number, u.address, u.city, u.state, u.zip_code FROM users as u WHERE u.Id = ?");
+		$query->execute(array($userId));
+		$contactInfo = $query->fetchAll(PDO::FETCH_ASSOC);
+		echo var_dump($contactInfo);
+	} catch(PDOException $ex) {
+		echo "Something went wrong with getting the contact information"; 
+		echo $ex->getMessage();
+	}
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +38,6 @@
 		<!-- Begin page content -->
 		<div class="container">
 		    <div class="row">
-			
 				<!-- sidebar Include -->
 				<?php include "php/sidebar.php";?> 
 				
@@ -46,56 +54,56 @@
 									<label for="firstName" class="col-lg-2 control-label">
 									First Name:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="firstName" name="firstName"/>
+										<input type="text" class="form-control" id="firstName" name="firstName" value="<?php echo $contactInfo[0]["first_name"];?>"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="lastName" class="col-lg-2 control-label">
 									Last Name:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="lastName" name="lastName"/>
+										<input type="text" class="form-control" id="lastName" name="lastName" value="<?php echo $contactInfo[0]["last_name"];?>"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="email" class="col-lg-2 control-label">
 									 Email:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="email" name="email"/>
+										<input type="text" class="form-control" id="email" name="email" value="<?php echo $contactInfo[0]["email"];?>"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="phone" class="col-lg-2 control-label">
 									Phone Number:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="phone" name="phone"/>
+										<input type="text" class="form-control" id="phone" name="phone" value="<?php echo $contactInfo[0]["phone_number"];?>"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="address" class="col-lg-2 control-label">
 									Address:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="address" name="address"/>
+										<input type="text" class="form-control" id="address" name="address" value="<?php echo $contactInfo[0]["address"];?>"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="city" class="col-lg-2 control-label">
 									City:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="city" name="city"/>
+										<input type="text" class="form-control" id="city" name="city" value="<?php echo $contactInfo[0]["city"];?>"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="state" class="col-lg-2 control-label">
 									State:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="state" name="state"/>
+										<input type="text" class="form-control" id="state" name="state" value="<?php echo $contactInfo[0]["state"];?>"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="zipcode" class="col-lg-2 control-label">
 									Zipcode:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="zipcode" name="zipcode"/>
+										<input type="text" class="form-control" id="zipcode" name="zipcode" value="<?php echo $contactInfo[0]["zip_code"];?>"/>
 									</div>
 								</div>
 								<div class="form-group">
