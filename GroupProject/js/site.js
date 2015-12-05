@@ -100,6 +100,8 @@ function validateForm(formId) {
 			}
 		}
 	});
+	
+	return isValid; // austin you forgot to return isValid so I added it for you :P
 }
 
 function validatePhoneNumber(field) {

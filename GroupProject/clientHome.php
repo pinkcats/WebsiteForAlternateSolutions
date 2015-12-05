@@ -5,9 +5,17 @@
 		$query = $db->prepare("SELECT u.first_name, u.last_name, u.email, u.phone_number, u.address, u.city, u.state, u.zip_code FROM users as u WHERE u.Id = ?");
 		$query->execute(array($userId));
 		$contactInfo = $query->fetchAll(PDO::FETCH_ASSOC);
-		echo var_dump($contactInfo);
 	} catch(PDOException $ex) {
 		echo "Something went wrong with getting the contact information"; 
+		echo $ex->getMessage();
+	}
+	
+	try{
+		$services = $db->prepare("SELECT Id, name, description FROM services");
+		$services->execute(array());
+		$servicesArr = $services->fetchAll(PDO::FETCH_ASSOC);
+	}catch (PDOException $ex){
+		echo "Something went wrong with getting the services"; 
 		echo $ex->getMessage();
 	}
 ?>
@@ -49,7 +57,14 @@
 					<div class="well">
 						<article>
 							<h3>Contact Information</h3>
-							<form class="form-horizontal">
+							<form id="contactInfoForm" class="form-horizontal">
+								<div class="form-group hidden">
+									<label for="Id" class="col-lg-2 control-label">
+									Id:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="Id" name="Id" value="<?php echo $userId;?>"/>
+									</div>
+								</div>
 								<div class="form-group">
 									<label for="firstName" class="col-lg-2 control-label">
 									First Name:</label>
@@ -68,14 +83,14 @@
 									<label for="email" class="col-lg-2 control-label">
 									 Email:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="email" name="email" value="<?php echo $contactInfo[0]["email"];?>"/>
+										<input type="text" class="form-control" id="email" name="email" data-type="emailAddress" value="<?php echo $contactInfo[0]["email"];?>"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="phone" class="col-lg-2 control-label">
 									Phone Number:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="phone" name="phone" value="<?php echo $contactInfo[0]["phone_number"];?>"/>
+										<input type="text" class="form-control" id="phone" name="phone" data-type="phoneNumber" value="<?php echo $contactInfo[0]["phone_number"];?>"/>
 									</div>
 								</div>
 								<div class="form-group">
@@ -103,12 +118,12 @@
 									<label for="zipcode" class="col-lg-2 control-label">
 									Zipcode:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="zipcode" name="zipcode" value="<?php echo $contactInfo[0]["zip_code"];?>"/>
+										<input type="text" class="form-control" id="zipcode" name="zipcode" data-type="zipCode" value="<?php echo $contactInfo[0]["zip_code"];?>"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="col-lg-10 col-lg-offset-2">
-										<a href="#" class="btn btn-default">Save</a>
+										<a id="contactInfoSave" class="btn btn-default">Save</a>
 									</div>
 								</div>
 							</form>
@@ -161,8 +176,8 @@
 									<div class="col-lg-10">
 										<select id="service" name="service" class="form-control">
 											<option value="-1">Select a Service</option>
-											<?php foreach($services as $service){ ?>
-												<option><?= $service['name']; ?></option>
+											<?php foreach($servicesArr as $service){ ?>
+												<option value="<?php echo $service['Id']?>"><?= $service['name']; ?></option>
 											<?php } ?>
 										</select>
 									</div>
@@ -199,5 +214,6 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/site.js"></script>
+		<script src="js/contactInfo.js"></script>
 	</body>
 </html>

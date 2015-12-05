@@ -70,3 +70,7 @@ nav img {
 .invalid{
   background-color: #b3003b;
 }
+
+.hidden{
+	display: none;
+}
