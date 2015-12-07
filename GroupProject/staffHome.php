@@ -1,5 +1,24 @@
 <?php
 	include "php/staffConfig.php";
+	include_once "php/dbConfig.php";
+	
+	try{
+		$clients = $db->prepare("SELECT Id, first_name, last_name, email, CONCAT(first_name, ' ', last_name) AS full_name FROM users WHERE is_staff = 0");
+		$clients->execute(array());
+		$clientsArr = $clients->fetchAll(PDO::FETCH_ASSOC);
+	}catch (PDOException $ex){
+		echo "Something went wrong with getting the clients"; 
+		echo $ex->getMessage();
+	}
+	
+	try{
+		$services = $db->prepare("SELECT Id, name, description FROM services");
+		$services->execute(array());
+		$servicesArr = $services->fetchAll(PDO::FETCH_ASSOC);
+	}catch (PDOException $ex){
+		echo "Something went wrong with getting the services"; 
+		echo $ex->getMessage();
+	}
 ?>
 
 <!DOCTYPE html>
@@ -41,9 +60,9 @@
 					<h2>Clients</h2>
 						<table class="table">
 							<tbody>
-								<?php foreach($clients as $client){ ?>
+								<?php foreach($clientsArr as $client){ ?>
 									<tr>
-										<td><h3><?= $client['name'];?></h3></td>
+										<td><h3><?= $client['full_name'];?></h3></td>
 										<td><a href="#" class="btn btn-default">View</a></td>
 										<td><a href="#" class="btn btn-default">Edit</a></td>
 									</tr>
@@ -72,8 +91,8 @@
 									<div class="col-lg-10">
 										<select id="service" name="service" class="form-control">
 											<option value="-1">Select a Service</option>
-											<?php foreach($services as $service){ ?>
-												<option><?= $service['name']; ?></option>
+											<?php foreach($servicesArr as $service){ ?>
+												<option value="<?php echo $service['Id']?>"><?= $service['name']; ?></option>
 											<?php } ?>
 										</select>
 									</div>
@@ -83,8 +102,8 @@
 									<div class="col-lg-10">
 										<select id="client" name="client" class="form-control">
 											<option value="-1">Select a Client</option>
-											<?php foreach($clients as $client){ ?> 
-												<option><?= $client['name']; ?></option>
+											<?php foreach($clientsArr as $client){ ?> 
+												<option value="<?php echo $client['Id']?>"><?= $client['full_name']; ?></option>
 											<?php } ?>
 										</select>
 									</div>
