@@ -11,6 +11,7 @@
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<meta name="description" content="">
 		<meta name="author" content="">
+		<meta name="robots" content="noindex, nofollow" />
 		<!--<link rel="icon" href="../../favicon.ico">-->
 		<!-- Bootstrap core CSS -->
 		<link href="css/bootstrap.css" rel="stylesheet">
@@ -48,7 +49,7 @@
 								<div class="form-group">
 									<label for="password" class="col-lg-2 control-label">Password:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="password" name="password"/>
+										<input type="password" class="form-control" id="password" name="password"/>
 									</div>
 								</div>
 								<div class="form-group">

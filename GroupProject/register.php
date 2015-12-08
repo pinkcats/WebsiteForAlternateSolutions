@@ -7,6 +7,7 @@
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<meta name="description" content="">
 		<meta name="author" content="">
+		<meta name="robots" content="noindex, nofollow" />
 		<!--<link rel="icon" href="../../favicon.ico">-->
 		<!-- Bootstrap core CSS -->
 		<link href="css/bootstrap.css" rel="stylesheet">
@@ -113,14 +114,14 @@
     							<div class="form-group">
       								<label for="password" class="col-lg-2 control-label">Password</label>
       								<div class="col-lg-10">
-        								<input type="text" class="form-control" id="password" data-type="password" data-compare="passwordConfirmation" name="password">
+        								<input type="password" class="form-control" id="password" data-type="password" data-compare="passwordConfirmation" name="password">
       								</div>
     							</div>
 
     							<div class="form-group">
       								<label for="passwordConfirmation" class="col-lg-2 control-label">Password Confirmation</label>
       								<div class="col-lg-10">
-        								<input type="text" class="form-control" id="passwordConfirmation" name="passwordConfirmation">
+        								<input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation">
       								</div>
     							</div>
 
@@ -140,7 +141,43 @@
 				</div> 
 			</div>
 		</div>
-
+		<!---Modal--->
+		<div class="modal" id="staffVeriModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							<span class="glyphicon glyphicon glyphicon-remove"></span>
+						</button>
+						<h4 class="modal-title">Staff Verifcation</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal" id="staffVeriForm">
+							<div class="form-group">
+      								<label for="staffUser" class="col-lg-2 control-label">Username:</label>
+      								<div class="col-lg-10">
+        								<input type="text" class="form-control" id="staffUser" name="staffUser">
+      								</div>
+    						</div>
+							<div class="form-group">
+      								<label for="staffPass" class="col-lg-2 control-label">Password:</label>
+      								<div class="col-lg-10">
+        								<input type="text" class="form-control" id="staffPass" name="staffPass">
+      								</div>
+    						</div>
+							<div class="modal-footer">
+								<div class="form-group">
+      								<div class="col-lg-10 col-lg-offset-2">
+									<button type="button" class="btn btn-default">Submit</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      								</div>
+    							</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 		<!-- Footer Include -->
 		<?php include "php/footer.php"; ?>
 
