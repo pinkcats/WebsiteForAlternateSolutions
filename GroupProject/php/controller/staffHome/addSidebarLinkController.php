@@ -2,7 +2,7 @@
 	header('Content-Type', 'application/json');
 	$title = $_POST["addSidebarLinkTitle"];
 	$link = $_POST["addSidebarLinkAddress"];
-	$isArchived = $_POST["addSidebarLinkisArchived"];
+	$isArchived = boolval($_POST["addSidebarLinkisArchived"]);
 	include_once "../../dbConfig.php";
 	
 	$addSidebarLinkResponse = array("success" => FALSE);
