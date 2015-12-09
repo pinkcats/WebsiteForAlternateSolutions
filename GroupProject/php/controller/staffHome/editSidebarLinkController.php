@@ -2,7 +2,7 @@
 	header('Content-Type', 'application/json');
 	$title = $_POST["editSidebarLinkTitle"];
 	$link = $_POST["editSidebarLinkAddress"];
-	$isArchived = $_POST["editSidebarLinkisArchived"];
+	$isArchived = boolval($_POST["editSidebarLinkisArchived"]);
 	$id = $_POST["editSidebarLinkId"];
 	include_once "../../dbConfig.php";
 	
