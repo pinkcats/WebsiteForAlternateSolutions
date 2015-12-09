@@ -39,6 +39,7 @@
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<meta name="description" content="">
 		<meta name="author" content="">
+		<meta name="robots" content="noindex, nofollow" />
 		<!--<link rel="icon" href="../../favicon.ico">-->
 		<!-- Bootstrap core CSS -->
 		<link href="css/bootstrap.css" rel="stylesheet">
@@ -67,7 +68,7 @@
 					<hr/>
 					<div class="well">
 					<h2>Clients</h2>
-						<table class="table">
+						<table class="table table table-striped table-hover">
 							<tbody>
 								<?php foreach($clientsArr as $client){ ?>
 									<tr>
@@ -127,7 +128,7 @@
 					</div>
 					<div class="well">
 						<h2>Requests</h2>
-						<table class="table">
+						<table class="table table-striped table-hover">
 							<tbody>
 							<?php foreach($requests as $request){?>
 								<tr>
@@ -168,6 +169,29 @@
 											<td class="text-right"><button type="button" class="btn btn-default editSidebarLink" data-id="<?= $link['Id']; ?>">Edit</button></td>
 											<td class="text-right"><button type="button" class="btn btn-default deleteSidebarLink" data-id="<?= $link['Id']; ?>">Delete</button></td>
 										</tr>
+									<?php } ?>
+								</tbody>
+							</table>
+						</article>
+					</div>
+					<div class="well">
+						<article>
+							<h2>Contact Requests</h2>
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Email</th>
+										<th>Request</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php foreach($contacts as $contact){ ?>
+									<tr>
+										<td><?= $contact['name'];?></td>
+										<td><?= $contact['email'];?></td>
+										<td><?= $contact['request'];?></td>
+									</tr>
 									<?php } ?>
 								</tbody>
 							</table>
