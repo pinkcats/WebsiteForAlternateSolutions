@@ -136,7 +136,7 @@
 									<td><?= $request['client'];?></td>
 									<td><?= $request['date'];?></td>
 									<td><?= $request['time']?></td>
-									<td></td>
+									<td><a class="btn btn-default">Do Something Or Something</a></td>
 								</tr>
 							<?php } ?>
 							</tbody>
@@ -191,6 +191,7 @@
 										<td><?= $contact['name'];?></td>
 										<td><?= $contact['email'];?></td>
 										<td><?= $contact['request'];?></td>
+										<td><a href="#" class="btn btn-default">Archive</a></td>
 									</tr>
 									<?php } ?>
 								</tbody>
