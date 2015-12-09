@@ -156,7 +156,6 @@
 										<th>Archived</th>
 										<th></th>
 										<th></th>
-										<th></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -165,7 +164,6 @@
 											<td id="title<?= $link['Id']; ?>"><?= $link['title']; ?></td>
 											<td id="link<?= $link['Id']; ?>"><a target="_blank" href="<?= $link['link']; ?>"><?= $link['link']; ?></a></td>
 											<td id="isArchived<?= $link['Id']; ?>"><?= $link['isArchived']; ?></td>
-											<td class="text-right"><button type="button" class="btn btn-default archiveSidebarLink" data-id="<?= $link['Id']; ?>">Archive</button></td>
 											<td class="text-right"><button type="button" class="btn btn-default editSidebarLink" data-id="<?= $link['Id']; ?>">Edit</button></td>
 											<td class="text-right"><button type="button" class="btn btn-default deleteSidebarLink" data-id="<?= $link['Id']; ?>">Delete</button></td>
 										</tr>
@@ -281,17 +279,17 @@
 									</div>
 								</div>
 								<div class="form-group">
-      								<label for="editSidebarLinkisArchived" class="col-lg-2 control-label">Archived</label>
+      								<label for="editSidebarLinkIsArchived" class="col-lg-2 control-label">Archived</label>
       								<div class="col-lg-10">
         								<div class="radio">
           									<label>
-            									<input type="radio" name="editSidebarLinkisArchived" value="1">
+            									<input type="radio" id="editSidebarLinkIsArchived" name="editSidebarLinkIsArchived" value="1">
             										Yes
           									</label>
     									</div>
         								<div class="radio">
           									<label>
-									            <input type="radio" name="editSidebarLinkisArchived" value="0" checked="">
+									            <input type="radio" id="editSidebarLinkIsNotArchived" name="editSidebarLinkIsArchived" value="0" checked="">
 									            	No
           										</label>
         								</div>

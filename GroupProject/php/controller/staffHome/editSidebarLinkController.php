@@ -2,7 +2,7 @@
 	header('Content-Type', 'application/json');
 	$title = $_POST["editSidebarLinkTitle"];
 	$link = $_POST["editSidebarLinkAddress"];
-	$isArchived = boolval($_POST["editSidebarLinkisArchived"]);
+	$isArchived = boolval($_POST["editSidebarLinkIsArchived"]);
 	$id = $_POST["editSidebarLinkId"];
 	include_once "../../dbConfig.php";
 	
@@ -25,9 +25,7 @@
 			$link, 
 			$isArchived,
 			$id));
-		if($query->rowCount() == 1){
-			$editSidebarLinkResponse['success'] = TRUE;
-		}
+		$editSidebarLinkResponse['success'] = TRUE;
 	} catch(PDOException $ex) {
 		$editSidebarLinkResponse['errorMessage'] = $ex->getMessage();
 	}
