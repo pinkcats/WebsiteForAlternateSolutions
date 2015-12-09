@@ -54,7 +54,7 @@
 									<label for="contactUsPhone" class="col-lg-2 control-label">
 										Phone:</label>
 									<div class="col-lg-10">
-										<input type="text" id="contactUsPhone" name="phone" class="form-control"/>
+										<input type="text" id="contactUsPhone" data-type="phoneNumber" name="phone" class="form-control"/>
 									</div>
 								</div>
 								<div class="form-group">
@@ -62,7 +62,7 @@
 										Email:
 									</label>
 									<div class="col-lg-10">
-										<input type="text" id="contactUsEmail"  name="email" class="form-control"/>
+										<input type="text" id="contactUsEmail" data-type="emailAddress" name="email" class="form-control"/>
 									</div>
 								</div>
 								<div class="form-group">
@@ -80,7 +80,6 @@
 								<div class="form-group">
 									<div class="col-lg-10 col-lg-offset-2">
 										<a id="contactUsSubmit" class="btn btn-default">Submit</a>
-										<span id="contactUsError">Your form is invalid.</span>
 									</div>
 								</div>
 							</form>

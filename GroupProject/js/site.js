@@ -89,15 +89,16 @@ function validateForm(formId) {
 
 		if(!field.hasClass("invalid")){
 			if(fieldType == "phoneNumber"){
-				isValid = isValid && validatePhoneNumber(field);
+				thisFieldValid = validatePhoneNumber(field);
 			} else if(fieldType === "emailAddress") {
-				isValid = isValid && validateEmailAddress(field);
+				thisFieldValid = validateEmailAddress(field);
 			} else if(fieldType === "zipCode") {
-				isValid = isValid && validateZipCode(field);
+				thisFieldValid = validateZipCode(field);
 			} else if(fieldType === "password") {
-				isValid = isValid && validatePassword(field);
+				thisFieldValid = validatePassword(field);
 			}
 		}
+		isValid = isValid && thisFieldValid; 
 	});
 	return isValid; // austin you forgot to return isValid so I added it for you :P
 }

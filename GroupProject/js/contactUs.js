@@ -1,11 +1,24 @@
 $(document).ready( function() {
-	
-	$("#contactUsError").hide();
-    
 	var contactUsForm = $('#contactUsForm');
+
+    $("#contactUsForm input").on("blur", function() {
+    	if(contactUsForm.hasClass("dirty")){
+    		validateForm("contactUsForm");
+    	}
+    });
+
+	//$("#contactUsError").hide();
+    
+	
 	
 	$("#contactUsSubmit").on("click", function() {
-		var valid = true;
+		contactUsForm.addClass("dirty");
+    	var valid = validateForm("contactUsForm");
+
+		if(!valid) { 
+			return;
+		}
+		/*var valid = true;
 		var name = $("#contactUsName").val();
 		var phone = $("#contactUsPhone").val();
 		var email = $("#contactUsEmail").val();
@@ -31,22 +44,20 @@ $(document).ready( function() {
 		
 		if(message.length < 1){
 			valid = false;
-		}
+		}*/
 		
-		if(valid){
-			$.ajax( {
-				type: "POST",
-				url: "php/controller/contactUsController.php",
-				data: contactUsForm.serialize(),
-				dataType: "json",
-				success: function(response) {
-					document.getElementById("contactUsForm").reset();
-					$("#contactUsError").hide();
-					alert("Success");
-				}
-			});  
-		}else{
-			$("#contactUsError").show();
-		}
+
+		$.ajax( {
+			type: "POST",
+			url: "php/controller/contactUsController.php",
+			data: contactUsForm.serialize(),
+			dataType: "json",
+			success: function(response) {
+				document.getElementById("contactUsForm").reset();
+				$("#contactUsError").hide();
+				alert("Success");
+			}
+		});  
+
 	});
 });
