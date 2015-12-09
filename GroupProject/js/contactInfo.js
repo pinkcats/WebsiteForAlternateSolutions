@@ -13,7 +13,6 @@ $(document).ready( function() {
 		
     	contactInfoForm.addClass("dirty");
     	var valid = validateForm("contactInfoForm");
-
 		if(!valid) { 
 			return;
 		}

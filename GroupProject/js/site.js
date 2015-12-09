@@ -52,7 +52,7 @@ function validateForm(formId) {
 	$("#" + formId + " *").filter(':input').each(function(){
 	    var field = $(this);
 	    var fieldData = field.data();
-	    
+
 	    //Funny logic below, but works easiest to make it so all fields are required
 	    //unless specifically stated as it being not required
 	    var fieldRequired = !(fieldData.required === false);
@@ -69,7 +69,6 @@ function validateForm(formId) {
 		    	thisFieldValid = true;
 		    }
 	    }
-	    
 	    isValid = isValid && thisFieldValid; 
 	});
 
@@ -90,17 +89,16 @@ function validateForm(formId) {
 
 		if(!field.hasClass("invalid")){
 			if(fieldType == "phoneNumber"){
-				isValid = validatePhoneNumber(field);
+				isValid = isValid && validatePhoneNumber(field);
 			} else if(fieldType === "emailAddress") {
-				isValid = validateEmailAddress(field);
+				isValid = isValid && validateEmailAddress(field);
 			} else if(fieldType === "zipCode") {
-				isValid = validateZipCode(field);
+				isValid = isValid && validateZipCode(field);
 			} else if(fieldType === "password") {
-				isValid = validatePassword(field);
+				isValid = isValid && validatePassword(field);
 			}
 		}
 	});
-	
 	return isValid; // austin you forgot to return isValid so I added it for you :P
 }
 

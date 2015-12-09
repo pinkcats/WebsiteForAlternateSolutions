@@ -19,6 +19,15 @@
 		echo "Something went wrong with getting the services"; 
 		echo $ex->getMessage();
 	}
+
+	try{
+		$sidebarLinks = $db->prepare("SELECT Id, title, link, (isArchived + 0) AS isArchived FROM sidebarLinks");
+		$sidebarLinks->execute(array());
+		$sidebarLinksArr = $sidebarLinks->fetchAll(PDO::FETCH_ASSOC);
+	}catch (PDOException $ex){
+		echo "Something went wrong with getting the sidebar links"; 
+		echo $ex->getMessage();
+	}
 ?>
 
 <!DOCTYPE html>
@@ -143,20 +152,23 @@
 									<tr>
 										<th>Title</th>
 										<th>Link</th>
+										<th>Archived</th>
 										<th></th>
 										<th></th>
 										<th></th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>Thing</td>
-										<td>http://thing.com</td>
-										<td class="text-right"><a href="#" class="btn btn-default">Archive</a></td>
-										<td class="text-right"><a href="#" class="btn btn-default">Edit</a></td>
-										<td class="text-right"><a href="#" class="btn btn-default">Delete</a></td>
-									</tr>
-									
+									<?php foreach($sidebarLinksArr as $link){ ?>
+										<tr>
+											<td id="title<?= $link['Id']; ?>"><?= $link['title']; ?></td>
+											<td id="link<?= $link['Id']; ?>"><a target="_blank" href="<?= $link['link']; ?>"><?= $link['link']; ?></a></td>
+											<td id="isArchived<?= $link['Id']; ?>"><?= $link['isArchived']; ?></td>
+											<td class="text-right"><button type="button" class="btn btn-default archiveSidebarLink" data-id="<?= $link['Id']; ?>">Archive</button></td>
+											<td class="text-right"><button type="button" class="btn btn-default editSidebarLink" data-id="<?= $link['Id']; ?>">Edit</button></td>
+											<td class="text-right"><button type="button" class="btn btn-default deleteSidebarLink" data-id="<?= $link['Id']; ?>">Delete</button></td>
+										</tr>
+									<?php } ?>
 								</tbody>
 							</table>
 						</article>
@@ -176,11 +188,96 @@
         				<h4 class="modal-title">Add Sidebar Link</h4>
       				</div>
       				<div class="modal-body">
-        				<p>asdfsfd</p>
+        				<article>
+							<form class="form-horizontal" id="addSidebarLinkForm">
+								<div class="form-group">
+									<label for="addSidebarLinkTitle" class="col-lg-2 control-label">Title:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="addSidebarLinkTitle" name="addSidebarLinkTitle" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="addSidebarLinkAddress" class="col-lg-2 control-label">link:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="addSidebarLinkAddress" name="addSidebarLinkAddress"/>
+									</div>
+								</div>
+								<div class="form-group">
+      								<label for="addSidebarLinkisArchived" class="col-lg-2 control-label">Archived</label>
+      								<div class="col-lg-10">
+        								<div class="radio">
+          									<label>
+            									<input type="radio" name="addSidebarLinkisArchived" value="1">
+            										Yes
+          									</label>
+    									</div>
+        								<div class="radio">
+          									<label>
+									            <input type="radio" name="addSidebarLinkisArchived" value="0" checked="">
+									            	No
+          										</label>
+        								</div>
+      								</div>
+    							</div>
+							</form>
+						</article>
       				</div>
       				<div class="modal-footer">
         				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        				<button type="button" class="btn btn-default">Save changes</button>
+        				<button type="button" class="btn btn-default" id="addSidebarLinkSubmit">Save changes</button>
+      				</div>
+    			</div>
+  			</div>
+		</div>
+
+		<div class="modal" id="editSidebarLinkModal">
+  			<div class="modal-dialog">
+    			<div class="modal-content">
+      				<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        					<span class="glyphicon glyphicon glyphicon-remove"></span>
+        				</button>
+        				<h4 class="modal-title">Edit Sidebar Link</h4>
+      				</div>
+      				<div class="modal-body">
+        				<article>
+							<form class="form-horizontal" id="editSidebarLinkForm">
+								<input type="hidden" id="editSidebarLinkId" name="editSidebarLinkId"/>
+								<div class="form-group">
+									<label for="editSidebarLinkTitle" class="col-lg-2 control-label">Title:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="editSidebarLinkTitle" name="editSidebarLinkTitle" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="editSidebarLinkAddress" class="col-lg-2 control-label">Link:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="editSidebarLinkAddress" name="editSidebarLinkAddress"/>
+									</div>
+								</div>
+								<div class="form-group">
+      								<label for="editSidebarLinkisArchived" class="col-lg-2 control-label">Archived</label>
+      								<div class="col-lg-10">
+        								<div class="radio">
+          									<label>
+            									<input type="radio" name="editSidebarLinkisArchived" value="1">
+            										Yes
+          									</label>
+    									</div>
+        								<div class="radio">
+          									<label>
+									            <input type="radio" name="editSidebarLinkisArchived" value="0" checked="">
+									            	No
+          										</label>
+        								</div>
+      								</div>
+    							</div>
+							</form>
+						</article>
+      				</div>
+      				<div class="modal-footer">
+        				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        				<button type="button" class="btn btn-default" id="editSidebarLinkSubmit">Save changes</button>
       				</div>
     			</div>
   			</div>
@@ -192,5 +289,6 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/site.js"></script>
+		<script src="js/staffHome.js"></script>
 	</body>
 </html>
