@@ -46,37 +46,7 @@
 			 		?
 		 		);
 		");
-		/*
-			INSERT INTO 
-				users 
-				(
-					Id,
-					first_name,
-					last_name,
-					address,
-					city,
-					state,
-					zip_code,
-					is_staff,
-					email,
-					phone_number,
-					password
-				)
-			VALUES 
-				(
-					NULL,
-					'Tet',
-					'test',
-					'test',
-					'test',
-					'test',
-					'344',
-					'1',
-					'test@test.xc',
-					'3424',
-					'test'
-				)
-		*/
+	
 		$query->execute(array(
 			$firstName, 
 			$lastName, 
