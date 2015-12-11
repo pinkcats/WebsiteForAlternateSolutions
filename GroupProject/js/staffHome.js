@@ -1,7 +1,17 @@
 $(document).ready( function() {
 	addSidebarLink();
 	editSidebarLink();
+	nameUpdate();
 });
+
+function nameUpdate(){
+	// this must be added after the contactInfo is on the page
+	// and can be edited
+	// add a span where the welcome message is
+	// var firstName = $("#firstName").val();
+	// var lastName = $("#lastName").val();
+	// jquery select the id and .text(firstName + " " + lastName);
+};
 
 function editSidebarLink() {
 
