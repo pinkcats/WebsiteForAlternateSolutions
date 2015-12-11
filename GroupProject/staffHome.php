@@ -28,6 +28,15 @@
 		echo "Something went wrong with getting the sidebar links"; 
 		echo $ex->getMessage();
 	}
+	
+	try{
+		$contactRequests = $db->prepare("SELECT Id, name, email, message AS request FROM contactUs");
+		$contactRequests->execute(array());
+		$contactRequestsArr = $contactRequests->fetchAll(PDO::FETCH_ASSOC);
+	}catch (PDOException $ex){
+		echo "Something went wrong with getting the contact requests"; 
+		echo $ex->getMessage();
+	}
 ?>
 
 <!DOCTYPE html>
@@ -180,18 +189,20 @@
 							<table class="table table-striped table-hover">
 								<thead>
 									<tr>
+										<th class="hidden">Id</th>
 										<th>Name</th>
 										<th>Email</th>
 										<th>Request</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach($contacts as $contact){ ?>
+									<?php foreach($contactRequestsArr as $contact){ ?>
 									<tr>
+										<td class="hidden"><?= $contact['Id'];?></td>
 										<td><?= $contact['name'];?></td>
 										<td><?= $contact['email'];?></td>
 										<td><?= $contact['request'];?></td>
-										<td><a href="#" class="btn btn-default">Archive</a></td>
+										<td><a  class="btn btn-default">Archive</a></td>
 									</tr>
 									<?php } ?>
 								</tbody>
