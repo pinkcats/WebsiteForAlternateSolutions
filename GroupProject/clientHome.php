@@ -187,14 +187,14 @@
 									<label for="date" class="col-lg-2 control-label">
 									Date:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="serviceRequesterDate" name="date" placeholder="mm/dd/yyyy" />
+										<input type="date" class="form-control" id="serviceRequesterDate" name="date" placeholder="mm/dd/yyyy" />
 									</div>
 								</div>
 								<div class="form-group hidden">
-									<label for="date" class="col-lg-2 control-label">
+									<label for="Id" class="col-lg-2 control-label">
 									Id:</label>
 									<div class="col-lg-10">
-										<input type="date" class="form-control" id="serviceRequesterId" name="Id" value="<?php echo $userId; ?>"/>
+										<input type="text" class="form-control" id="serviceRequesterId" name="Id" value="<?php echo $userId; ?>"/>
 									</div>
 								</div>
 								<div class="form-group">

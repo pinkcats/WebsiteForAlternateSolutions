@@ -57,7 +57,6 @@ function serviceRequest(){
 	$("#serviceRequesterSubmit").on("click", function() {
     	
 		debugger;
-		
     	serviceRequestForm.addClass("dirty");
     	var valid = validateForm("serviceRequestForm");
 		if(!valid) { 
