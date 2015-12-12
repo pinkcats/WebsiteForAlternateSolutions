@@ -18,6 +18,19 @@
 		echo "Something went wrong with getting the services"; 
 		echo $ex->getMessage();
 	}
+
+	try{
+		$organizationQuery = $db->prepare("SELECT name, email FROM userOrganization AS UO INNER JOIN organization AS O ON O.Id = UO.organization_Id WHERE user_Id = ?");
+		$organizationQuery->execute(array($userId));
+		$organizationInfo = $organizationQuery->fetchAll(PDO::FETCH_ASSOC);
+	}catch (PDOException $ex){
+		echo "Something went wrong with getting the services"; 
+		echo $ex->getMessage();
+	}
+
+	
+
+
 ?>
 
 <!DOCTYPE html>
@@ -127,6 +140,43 @@
 										<a id="contactInfoSave" class="btn btn-default">Save</a>
 									</div>
 								</div>
+							</form>
+						</article>
+					</div>
+					<div class="well">
+						<article>
+							<h3>Organization Information</h3>
+							<form id="joinOrganizationForm" class="form-horizontal">
+								<?php 
+									if(!empty($organizationInfo)){
+										?>
+											<div class="form-group">
+												<div class="col-lg-12">
+													<p><strong>Organization Name: </strong><span><?= $organizationInfo[0]["name"]; ?></span><p>
+												</div>
+												<div class="col-lg-12">
+													<p><strong>Organization Contact Email: </strong><span><?= $organizationInfo[0]["email"]; ?></span></p>
+												</div>
+											</div>
+										<?php
+									} else {
+										?>
+											<div class="form-group">
+												<label for="joinOrganizationKey" class="col-lg-2 control-label">
+												Key:</label>
+												<div class="col-lg-10">
+													<input type="text" class="form-control" id="joinOrganizationKey" name="joinOrganizationKey"/>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-lg-10 col-lg-offset-2">
+													<a id="joinOrganizationSubmit" class="btn btn-default">Join Organization</a>
+												</div>
+											</div>
+										<?php
+									}
+								?>
+								
 							</form>
 						</article>
 					</div>
