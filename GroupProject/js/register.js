@@ -2,6 +2,7 @@ $(document).ready( function() {
     var registerForm = $('#registerForm');
 	var staffVeriForm = $("#staffVeriForm");
 	var isValidStaffLogin = false;
+	var isValidOrganizationKey = false;
     $("#registerForm input").on("blur", function() {
     	if(registerForm.hasClass("dirty")){
     		validateForm("registerForm");
@@ -18,8 +19,13 @@ $(document).ready( function() {
 		if(!valid) { 
 			return;
 		}
-		var isStaff = $("input[name=isStaff]:checked").val()
-		if(isStaff == 1){
+		var isStaff = parseInt($("input[name=isStaff]:checked").val()) === 1;
+		var isOrganizaiton = parseInt($("input[name=isOrganization]:checked").val()) === 1;
+
+		if(isOrganizaiton){
+			verifyOrganizationKey();
+			
+		} else if(isStaff){
 			$("#responseMessage").empty();
 			$("#staffVeriModal").modal("show");
 			var staffForm = $("#staffVeriForm");
@@ -51,7 +57,55 @@ $(document).ready( function() {
 			registerUser();
 		}			
 	});
+
+	$("input[name=isOrganization]").on("change", function() {
+		var isOrganizaiton = parseInt($("input[name=isOrganization]:checked").val()) === 1;
+		var organizationKeyField = $("#organizationKeyDiv");
+		if(isOrganizaiton){
+			organizationKeyField.removeClass("hidden");
+		} else {
+			organizationKeyField.addClass("hidden");
+		}
+		
+	});
+
+
+	
 	//functions that might make things easier
+	var verifyOrganizationKey = function() {
+		var organizationKey = $("#organizationKey").val();
+		var validKey = false;
+		$.ajax({
+			type: "POST",
+			url: "php/controller/staffHome/checkOrganizationKeyController.php",
+			data: {
+				organizationKey: organizationKey
+			},
+			dataType: "json",
+			success: function(response) {
+				if(response.success){
+					isValidOrganizationKey = true;
+				}
+			},
+			error: function(response) {
+				console.log(response.errorMessage);
+			}
+		}).done(function(response){
+			markValid(response);
+		}); 
+	}
+
+	var markValid = function(response) {
+		debugger;
+		if(!isValidOrganizationKey){
+			var invalidKeyBlock = "<span class='help-block error'>Invalid Organization Key</span>";
+		    $("#organizationKey").parent().append(invalidKeyBlock);
+		} else {
+			var organizationId = response.organizationId;
+			registerUser(organizationId);
+		}
+	}
+
 	var isVerifed = function(){
 		if(!isValidStaffLogin){
 			$("#responseMessage").empty().append("Invalid Staff Login");
@@ -61,11 +115,15 @@ $(document).ready( function() {
 			
 		}
 	};
-	var registerUser =  function(){
+	var registerUser =  function(organizationId){
+		var data = registerForm.serialize();
+		if(typeof organizationId !== 'undefined'){
+			data += "&organizationId=" + encodeURIComponent(organizationId);
+		}
 		$.ajax( {
 				type: "POST",
 				url: "php/controller/registerController.php",
-				data: registerForm.serialize(),
+				data: data,
 				dataType: "json",
 				success: function(response) {
 					console.log(response.success);

@@ -58,7 +58,7 @@ function validateForm(formId) {
 	    var fieldRequired = !(fieldData.required === false);
 	    var thisFieldValid = true;
 	    //Here we check if all required fields have some stuff in them
-	    if(fieldRequired){
+	    if(fieldRequired && field.is(":visible")){
 	    	thisFieldValid = false;
 		    //Here we check if it is required, if so then check validation
 		    if(field.val() === ""){
