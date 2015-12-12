@@ -5,6 +5,7 @@ $(document).ready( function() {
 	nameUpdate();
 	addOrganization();
 	deleteOrganization();
+	deleteServiceRequest();
 });
 
 function nameUpdate(){
@@ -16,6 +17,49 @@ function nameUpdate(){
 	// jquery select the id and .text(firstName + " " + lastName);
 };
 
+ function deleteServiceRequest (){
+	 $(document).on("click",".deleteServiceRequest", function(){
+		 var request = $(this);
+		 var requestId = request.data().id;
+		 $.ajax({
+			 type:"POST",
+			 url: "php/controller/staffHome/deleteServiceRequestController",
+			 data: {requestId : requestId},
+			 dataType: "json",
+			 success: function(response){
+				 if(response.success){
+					 $("#request"+requestId).parent().addClass("danger").delay(250).fadeOut();
+				 }else{
+					 alert('An error has occured! Error in console.');
+					 console.log(response.errorMessage);
+				 }
+			 }
+			 
+		 })
+	 });
+ }
+ 
+ function filterSchedule(){
+	 $("#filterSchedule").on("click",function(){
+		 var filterForm = $("#filterScheduleForm");
+		$.ajax({
+			type:"POST",
+			url: "php/controller/staffHome/filterScheduleController",
+			data: filterForm.serialize(),
+			dataType: "json",
+			success: function(response){
+				if(response.success){
+					console.log("You did it!!");
+					//do something with the info
+				}else{
+					alert('An error has occured! Error in console');
+					console.log(response.errorMessage);
+				}
+			}
+		}) 
+	 });
+ }
+ 
 function deleteSidebarLink() {
 	$(document).on("click", ".deleteSidebarLink", function() {
 		var link = $(this);
