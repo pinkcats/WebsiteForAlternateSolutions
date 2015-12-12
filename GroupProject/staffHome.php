@@ -28,6 +28,15 @@
 		echo "Something went wrong with getting the sidebar links"; 
 		echo $ex->getMessage();
 	}
+
+	try{
+		$organizations = $db->prepare("SELECT Id, name, organizationKey, email, address, city, state, zip_code FROM organization");
+		$organizations->execute(array());
+		$organizationsArr = $organizations->fetchAll(PDO::FETCH_ASSOC);
+	}catch (PDOException $ex){
+		echo "Something went wrong with getting the organizations"; 
+		echo $ex->getMessage();
+	}
 	
 	try{
 		$contactRequests = $db->prepare("SELECT Id, name, email, message AS request FROM contactUs");
@@ -183,6 +192,39 @@
 					</div>
 					<div class="well">
 						<article>
+							<h2>Organizations</h2>
+							<button type="button" class="btn btn-default" data-toggle="modal" data-target="#addOrganizationModal">
+								Add
+							</button>
+							<table class="table table-striped table-hover" id="organizationsTable">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Key</th>
+										<th></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php foreach($organizationsArr as $organization){ ?>
+										<tr>
+											<td id="organizationName<?= $organization['Id']; ?>"><?= $organization['name']; ?></td>
+											<td id="organizationKey<?= $organization['Id']; ?>"><?= $organization['organizationKey']; ?></td>
+											<td id="organizationEmail<?= $organization['Id']; ?>"><?= $organization['email']; ?></td>
+											<td class="hidden" id="organizationAddress<?= $organization['Id']; ?>"><?= $organization['address']; ?></td>
+											<td class="hidden" id="organizationCity<?= $organization['Id']; ?>"><?= $organization['city']; ?></td>
+											<td class="hidden" id="organizationState<?= $organization['Id']; ?>"><?= $organization['state']; ?></td>
+											<td class="hidden" id="organizationzipCode<?= $organization['Id']; ?>"><?= $organization['zip_code']; ?></td>
+											<td class="text-right"><button type="button" class="btn btn-default editOrganization" data-id="<?= $organization['Id']; ?>">Edit</button></td>
+											<td class="text-right"><button type="button" class="btn btn-default deleteOrganization" data-id="<?= $organization['Id']; ?>">Delete</button></td>
+										</tr>
+									<?php } ?>
+								</tbody>
+							</table>
+						</article>
+					</div>
+					<div class="well">
+						<article>
 							<h2>Contact Requests</h2>
 							<table class="table table-striped table-hover">
 								<thead>
@@ -258,7 +300,7 @@
       				</div>
       				<div class="modal-footer">
         				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        				<button type="button" class="btn btn-default" id="addSidebarLinkSubmit">Save changes</button>
+        				<button type="button" class="btn btn-default" id="addSidebarLinkSubmit">Submit</button>
       				</div>
     			</div>
   			</div>
@@ -312,6 +354,65 @@
       				<div class="modal-footer">
         				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         				<button type="button" class="btn btn-default" id="editSidebarLinkSubmit">Save changes</button>
+      				</div>
+    			</div>
+  			</div>
+		</div>
+
+		<div class="modal" id="addOrganizationModal">
+  			<div class="modal-dialog">
+    			<div class="modal-content">
+      				<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        					<span class="glyphicon glyphicon glyphicon-remove"></span>
+        				</button>
+        				<h4 class="modal-title">Add Organization</h4>
+      				</div>
+      				<div class="modal-body">
+        				<article>
+							<form class="form-horizontal" id="addOrganizationForm">
+								<div class="form-group">
+									<label for="addOrganizationName" class="col-lg-2 control-label">Name:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="addOrganizationName" name="addOrganizationName"/>
+									</div>
+								</div>						
+								<div class="form-group">
+									<label for="addOrganizationEmail" class="col-lg-2 control-label">Email:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="addOrganizationEmail" data-type="emailAddress" name="addOrganizationEmail" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="addOrganizationAddress" class="col-lg-2 control-label">Address:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="addOrganizationAddress" name="addOrganizationAddress" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="addOrganizationCity" class="col-lg-2 control-label">City:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="addOrganizationCity" name="addOrganizationCity" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="addOrganizationState" class="col-lg-2 control-label">State:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="addOrganizationState" name="addOrganizationState" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="addOrganizationZipCode" class="col-lg-2 control-label">Zip Code:</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="addOrganizationZipCode" data-type="zipCode" name="addOrganizationZipCode" />
+									</div>
+								</div>
+							</form>
+						</article>
+      				</div>
+      				<div class="modal-footer">
+        				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        				<button type="button" class="btn btn-default" id="addOrganizationSubmit">Submit</button>
       				</div>
     			</div>
   			</div>

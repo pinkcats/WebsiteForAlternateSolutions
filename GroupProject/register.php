@@ -152,6 +152,7 @@
 						<h4 class="modal-title">Staff Verifcation</h4>
 					</div>
 					<div class="modal-body">
+					<span id="responseMessage" class="error"></span>
 						<form class="form-horizontal" id="staffVeriForm">
 							<div class="form-group">
       								<label for="staffUser" class="col-lg-2 control-label">Username:</label>
@@ -162,13 +163,13 @@
 							<div class="form-group">
       								<label for="staffPass" class="col-lg-2 control-label">Password:</label>
       								<div class="col-lg-10">
-        								<input type="text" class="form-control" id="staffPass" name="staffPass">
+        								<input type="password" class="form-control" id="staffPass" name="staffPass">
       								</div>
     						</div>
 							<div class="modal-footer">
 								<div class="form-group">
       								<div class="col-lg-10 col-lg-offset-2">
-									<button type="button" class="btn btn-default">Submit</button>
+									<button type="button" id="staffVeriSubmit" class="btn btn-default">Submit</button>
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       								</div>
     							</div>

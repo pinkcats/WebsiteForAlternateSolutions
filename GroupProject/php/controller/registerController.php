@@ -6,7 +6,7 @@
 	$city = $_POST["city"];
 	$state = $_POST["state"];
 	$zipCode = $_POST["zipCode"];
-	$isStaff = $_POST["isStaff"];
+	$isStaff = boolval($_POST["isStaff"]);
 	$emailAddress = $_POST["emailAddress"];
 	$phoneNumber = $_POST["phoneNumber"];
 	$password = $_POST["password"];
