@@ -3,6 +3,8 @@ $(document).ready( function() {
 	editSidebarLink();
 	deleteSidebarLink();
 	nameUpdate();
+	addOrganization();
+	deleteOrganization();
 });
 
 function nameUpdate(){
@@ -146,6 +148,81 @@ function addSidebarLink() {
 			complete: function() {
 				addSidebarLinkForm.trigger("reset");
 				$('#addSidebarLinkModal').modal('hide');
+			}
+		});  
+	});
+}
+
+function addOrganization() {
+	var addOrganizationForm = $('#addOrganizationForm');
+
+    $("#addOrganizationForm input").on("blur", function() {
+    	if(addOrganizationForm.hasClass("dirty")){
+    		validateForm("addOrganizationForm");
+    	}
+    });
+
+
+    $("#addOrganizationSubmit").on("click", function() {
+    	//The user has tried submitting once so from here
+    	//on out we can check to remove validation after typing
+    	addOrganizationForm.addClass("dirty");
+    	var valid = validateForm("addOrganizationForm");
+
+		if(!valid) { 
+			return;
+		}
+		
+		$.ajax( {
+			type: "POST",
+			url: "php/controller/staffHome/addOrganizationController.php",
+			data: addOrganizationForm.serialize(),
+			dataType: "json",
+			success: function(response) {
+				if(response.success){
+					var newOrganization = response.newOrganization;
+					var name = "<td id='organizationName"+ newOrganization.id +"'>"+ newOrganization.name +"</td>";
+					var key = "<td id='link"+ newOrganization.id +"'>"+ newOrganization.key +"</td>";
+					var email = "<td id='organizationEmail"+ newOrganization.id +"'>"+ newOrganization.email +"</td>";
+					var address = "<td class='hidden' id='organizationAddress"+ newOrganization.id +"'>"+ newOrganization.address +"</td>";
+					var city = "<td class='hidden' id='organizationCity"+ newOrganization.id +"'>"+ newOrganization.city +"</td>";
+					var state = "<td class='hidden' id='organizationState"+ newOrganization.id +"'>"+ newOrganization.state +"</td>";
+					var zipCode = "<td class='hidden' id='organizationzipCode"+ newOrganization.id +"'>"+ newOrganization.zipCode +"</td>";
+					var editButton = "<td class='text-right'><button type='button' class='btn btn-default editOrganization' data-id='"+ newOrganization.id +"'>Edit</button></td>";;
+					var deleteButton = "<td class='text-right'><button type='button' class='btn btn-default deleteOrganization' data-id='"+ newOrganization.id +"'>Delete</button></td>";
+					var rows = name + "" + key + "" + email + "" + address + "" + city + "" + state + "" + zipCode + "" + editButton + "" + deleteButton;
+					$('#organizationsTable > tbody').hide().prepend("<tr class='success'>"+ rows +"</tr>").fadeIn("slow");
+				} else {
+					alert('An error has occured! Error in console.');
+					console.log(response.errorMessage);
+				}
+			},
+			complete: function() {
+				addOrganizationForm.trigger("reset");
+				$('#addOrganizationModal').modal('hide');
+			}
+		});  
+	});
+}
+
+function deleteOrganization() {
+	$(document).on("click", ".deleteOrganization", function() {
+		var organization = $(this);
+		var organizationId = organization.data().id;
+		$.ajax( {
+			type: "POST",
+			url: "php/controller/staffHome/deleteOrganizationController.php",
+			data: {
+				organizationId: organizationId
+			},
+			dataType: "json",
+			success: function(response) {
+				if(response.success){
+					$("#organizationName" + organizationId).parent().addClass("danger").delay(250).fadeOut();
+				} else {
+					alert('An error has occured! Error in console.');
+					console.log(response.errorMessage);
+				}
 			}
 		});  
 	});
