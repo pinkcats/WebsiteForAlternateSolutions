@@ -52,7 +52,7 @@
 				
 			    <div class="col-md-9">
 					<h1 id="sec0" style="text-align:center;">
-					Welcome, <?= $userFirstName . " " . $userLastName; ?>!
+					Welcome, <span id="userWelcome"></span>!
 					</h1>
 					<hr/>
 					<div class="well">

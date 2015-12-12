@@ -1,4 +1,9 @@
 $(document).ready( function() {
+	
+	var firstName = $("#firstName").val();
+	var lastName = $("#lastName").val();
+	$("#userWelcome").text(firstName + " " + lastName);
+	
     var contactInfoForm = $('#contactInfoForm');
 
     $("#contactInfoForm input").on("blur", function() {
@@ -25,7 +30,7 @@ $(document).ready( function() {
 			success: function(response) {
 				console.log(response.success);
 				if(response.success){
-					alert("It Worked");
+					window.location = "clientHome.php";
 				} else {
 					alert('An error has occured! Error in console.');
 					console.log(response.errorMessage);
