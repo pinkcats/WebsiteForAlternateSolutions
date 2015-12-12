@@ -20,6 +20,7 @@ $(document).ready( function() {
 		}
 		var isStaff = $("input[name=isStaff]:checked").val()
 		if(isStaff == 1){
+			$("#responseMessage").empty();
 			$("#staffVeriModal").modal("show");
 			var staffForm = $("#staffVeriForm");
 			//this will have username and password

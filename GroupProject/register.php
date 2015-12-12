@@ -152,7 +152,7 @@
 						<h4 class="modal-title">Staff Verifcation</h4>
 					</div>
 					<div class="modal-body">
-					<span id="responseMessage"></span>
+					<span id="responseMessage" class="error"></span>
 						<form class="form-horizontal" id="staffVeriForm">
 							<div class="form-group">
       								<label for="staffUser" class="col-lg-2 control-label">Username:</label>
