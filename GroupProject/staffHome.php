@@ -21,7 +21,7 @@
 	}
 
 	try{
-		$sidebarLinks = $db->prepare("SELECT Id, title, link, (isArchived + 0) AS isArchived FROM sidebarLinks");
+		$sidebarLinks = $db->prepare("SELECT Id, title, link, (isArchived + 0) AS isArchived FROM sidebarLinks ORDER BY Id DESC");
 		$sidebarLinks->execute(array());
 		$sidebarLinksArr = $sidebarLinks->fetchAll(PDO::FETCH_ASSOC);
 	}catch (PDOException $ex){
@@ -157,7 +157,7 @@
 							<button type="button" class="btn btn-default" data-toggle="modal" data-target="#addSidebarLinkModal">
 								Add
 							</button>
-							<table class="table table-striped table-hover">
+							<table class="table table-striped table-hover" id="sidebarLinksTable">
 								<thead>
 									<tr>
 										<th>Title</th>

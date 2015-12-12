@@ -1,6 +1,7 @@
 $(document).ready( function() {
 	addSidebarLink();
 	editSidebarLink();
+	deleteSidebarLink();
 	nameUpdate();
 });
 
@@ -13,9 +14,32 @@ function nameUpdate(){
 	// jquery select the id and .text(firstName + " " + lastName);
 };
 
+function deleteSidebarLink() {
+	$(document).on("click", ".deleteSidebarLink", function() {
+		var link = $(this);
+		var linkId = link.data().id;
+		$.ajax( {
+			type: "POST",
+			url: "php/controller/staffHome/deleteSidebarLinkController.php",
+			data: {
+				linkId: linkId
+			},
+			dataType: "json",
+			success: function(response) {
+				if(response.success){
+					$("#title" + linkId).parent().addClass("danger").delay(250).fadeOut();
+				} else {
+					alert('An error has occured! Error in console.');
+					console.log(response.errorMessage);
+				}
+			}
+		});  
+	});
+}
+
 function editSidebarLink() {
 	var currentLinkId;
-	$(".editSidebarLink").on("click", function() {
+	$(document).on("click", ".editSidebarLink", function() {
 		var link = $(this);
 		var linkId = link.data().id;
 		currentLinkId = linkId;
@@ -62,9 +86,9 @@ function editSidebarLink() {
 					var newTitle = $("#editSidebarLinkTitle").val();
 					var newLink = $("#editSidebarLinkAddress").val();
 					var newIsArchived = $('input[name=editSidebarLinkIsArchived]').filter(':checked').val();
+					$("#title" + currentLinkId).parent().addClass("success");
 					$("#title" + currentLinkId).text(newTitle);
 					$("#link" + currentLinkId).html("<a href=" + newLink + ">"+ newLink +"</a>");
-					console.log(newIsArchived);
 					$("#isArchived" + currentLinkId).text(newIsArchived);
 				} else {
 					alert('An error has occured! Error in console.');
@@ -107,7 +131,13 @@ function addSidebarLink() {
 			dataType: "json",
 			success: function(response) {
 				if(response.success){
-					alert('link successfully added. This message is ugly and will be replaced');
+					var newLink = response.newLink;
+					var title = "<td id='title"+ newLink.id +"'>"+ newLink.title +"</td>";
+					var linkAddress = "<td id='link"+ newLink.id +"'><a target='_blank' href='"+ newLink.link +"'>"+ newLink.link +"</a></td>";
+					var isArchived = "<td id='isArchived"+ newLink.id +"'>"+ newLink.isArchived +"</td>";
+					var editButton = "<td class='text-right'><button type='button' class='btn btn-default editSidebarLink' data-id='"+ newLink.id +"'>Edit</button></td>";;
+					var deleteButton = "<td class='text-right'><button type='button' class='btn btn-default deleteSidebarLink' data-id='"+ newLink.id +"'>Delete</button></td>";
+					$('#sidebarLinksTable > tbody').hide().prepend("<tr class='success'>" + title + "" + linkAddress + "" + isArchived + "" + editButton + "" + deleteButton + "</tr>").fadeIn("slow");
 				} else {
 					alert('An error has occured! Error in console.');
 					console.log(response.errorMessage);
