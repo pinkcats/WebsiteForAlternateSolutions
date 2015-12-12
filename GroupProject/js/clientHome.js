@@ -1,6 +1,7 @@
 $(document).ready( function() {
 	contactInfo();
 	serviceRequest();
+	joinOrganization();
 });
 
 function contactInfo(){
@@ -76,6 +77,47 @@ function serviceRequest(){
 					alert('An error has occured! Error in console.');
 					console.log(response.errorMessage);
 				}
+			}
+		});  
+	});
+};
+
+function joinOrganization(){
+    var joinOrganizationForm = $('#joinOrganizationForm');
+
+    $("#joinOrganizationForm input").on("blur", function() {
+    	if(joinOrganizationForm.hasClass("dirty")){
+    		validateForm("joinOrganizationForm");
+    	}
+    });
+
+
+    $("#joinOrganizationSubmit").on("click", function() {
+    	//The user has tried submitting once so from here
+    	//on out we can check to remove validation after typing
+    	joinOrganizationForm.addClass("dirty");
+    	debugger;
+    	var valid = validateForm("joinOrganizationForm");
+
+		if(!valid) { 
+			return;
+		}
+		
+		$.ajax( {
+			type: "POST",
+			url: "php/controller/clientHome/joinOrganizationController.php",
+			data: joinOrganizationForm.serialize(),
+			dataType: "json",
+			success: function(response) {
+				if(response.success){
+					alert('done');
+				} else {
+					alert('An error has occured! Error in console.');
+					console.log(response.errorMessage);
+				}
+			},
+			complete: function() {
+				joinOrganizationForm.trigger("reset");
 			}
 		});  
 	});
