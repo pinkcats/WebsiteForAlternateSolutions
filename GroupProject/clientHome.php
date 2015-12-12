@@ -170,12 +170,12 @@
 					<div class="well">
 						<article>
 							<h3>Request Service</h3>
-							<form class="form-horizontal">
+							<form id="serviceRequestForm" class="form-horizontal">
 								<div class="form-group">
 									<label for="service" class="col-lg-2 control-label">
 									Service:</label>
 									<div class="col-lg-10">
-										<select id="service" name="service" class="form-control">
+										<select id="serviceRequesterService" name="service" class="form-control">
 											<option value="-1">Select a Service</option>
 											<?php foreach($servicesArr as $service){ ?>
 												<option value="<?php echo $service['Id']?>"><?= $service['name']; ?></option>
@@ -187,19 +187,19 @@
 									<label for="date" class="col-lg-2 control-label">
 									Date:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="date" name="date"/>
+										<input type="text" class="form-control" id="serviceRequesterDate" name="date" placeholder="mm/dd/yyyy" />
 									</div>
 								</div>
-								<!--<div class="form-group">
-									<label for="time" class="col-lg-2 control-label">
-									Time:</label>
+								<div class="form-group hidden">
+									<label for="date" class="col-lg-2 control-label">
+									Id:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="time" name="time"/>
+										<input type="date" class="form-control" id="serviceRequesterId" name="Id" value="<?php echo $userId; ?>"/>
 									</div>
-								</div>-->
+								</div>
 								<div class="form-group">
 									<div class="col-lg-10 col-lg-offset-2">
-										<a href="#" class="btn btn-default">Submit</a>
+										<a id="serviceRequesterSubmit" class="btn btn-default">Submit</a>
 									</div>
 								</div>
 							</form>
@@ -215,6 +215,6 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/site.js"></script>
-		<script src="js/contactInfo.js"></script>
+		<script src="js/clientHome.js"></script>
 	</body>
 </html>
