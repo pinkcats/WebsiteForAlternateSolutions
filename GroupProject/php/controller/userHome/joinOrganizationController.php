@@ -16,38 +16,39 @@
 			$organizationKey));
 		$organization = $query->fetchAll(PDO::FETCH_ASSOC);
 		$organizationId = $organization[0]['Id'];
-		$organizationName = $organization[0]['Name'];
+		$organizationName = $organization[0]['name'];
 	} catch(PDOException $ex) {
 		$joinOrganizationResponse['errorMessage'] = $ex->getMessage();
 	}
 
-	try {
-		$query = $db->prepare
-		("
-			INSERT INTO 
-				userOrganization
-				(
-					user_Id,
-					organization_Id
-				)
-			VALUES 
-			 	(
-			 		?,
-			 		?
-		 		);
-		");
-	
-		$query->execute(array(
-			$userId, 
-			$organizationId));
-		if($query->rowCount() == 1){
-			$joinOrganizationResponse['success'] = TRUE;
-			$joinOrganizationResponse['newOrganization'] = array(
-				"name" => $organizationName);
+	if(!empty($organizationId) && isset($organizationId)){
+		try {
+			$query = $db->prepare
+			("
+				INSERT INTO 
+					userOrganization
+					(
+						user_Id,
+						organization_Id
+					)
+				VALUES 
+				 	(
+				 		?,
+				 		?
+			 		);
+			");
+		
+			$query->execute(array(
+				$userId, 
+				$organizationId));
+			if($query->rowCount() == 1){
+				$joinOrganizationResponse['success'] = TRUE;
+				$joinOrganizationResponse['newOrganization'] = array(
+					"name" => $organizationName);
+			}
+		} catch(PDOException $ex) {
+			$joinOrganizationResponse['errorMessage'] = $ex->getMessage();
 		}
-	} catch(PDOException $ex) {
-		$joinOrganizationResponse['errorMessage'] = $ex->getMessage();
 	}
-	
 	echo json_encode($joinOrganizationResponse);
 ?>
