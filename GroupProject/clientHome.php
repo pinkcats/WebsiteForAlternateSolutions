@@ -197,14 +197,14 @@
 											Start Date:
 											</label>
 											<div class="col-lg-10">
-												<input type="text" class="form-control" id="startDate" name="startDate"/>
+												<input type="date" class="form-control" id="startDate" name="startDate"/>
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="endDate" class="col-lg-2 control-label">
 											End Date:</label>
 											<div class="col-lg-10">
-												<input type="text" class="form-control" id="endDate" name="endDate"/>
+												<input type="date" class="form-control" id="endDate" name="endDate"/>
 											</div>
 										</div>
 										<div class="form-group">
