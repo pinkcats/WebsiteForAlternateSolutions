@@ -46,6 +46,24 @@
 		echo "Something went wrong with getting the contact requests"; 
 		echo $ex->getMessage();
 	}
+	
+	try{
+		$schedules = $db->prepare("SELECT users.first_name, users.last_name, schedule.startDate, schedule.endDate, services.name FROM users INNER JOIN schedule ON users.Id = schedule.clientId INNER JOIN services ON schedule.serviceId = services.Id WHERE schedule.isArchived =0");
+		$schedules->execute(array());
+		$schedulesArr = $schedules->fetchAll(PDO::FETCH_ASSOC);
+	}catch(PDOException $ex){
+		echo "Something went wrong with getting the schedule requests";
+		echo $ex->getMessage();
+	}
+	
+	try{
+		$services = $db->prepare("SELECT serviceRequests.Id, services.name, users.first_name, users.last_name, serviceRequests.Date FROM services INNER JOIN serviceRequests ON services.Id = serviceRequests.serviceId INNER JOIN users ON serviceRequests.userId = users.Id");
+		$services->execute(array());
+		$servicesRequestArr = $services->fetchAll(PDO::FETCH_ASSOC);
+	}catch(PDOException $ex){
+		echo "Something went wrong with getting the service requests";
+		echo $ex->getMessage();
+	}
 ?>
 
 <!DOCTYPE html>
@@ -101,23 +119,23 @@
 					<div class="well">
 						<h2>Schedule</h2>
 						<article>
-							<form class="form-horizontal">
+							<form class="form-horizontal" id="filterScheduleForm">
 								<div class="form-group">
 									<label for="startDate" class="col-lg-2 control-label">Start Date:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="startDate" name="startDate" />
+										<input type="text" class="form-control" id="scheduleStartDate" name="startDate" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="endDate" class="col-lg-2 control-label">End Date:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="endDate" name="endDate"/>
+										<input type="text" class="form-control" id="scheduleEndDate" name="endDate"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="service" class="col-lg-2 control-label">Service:</label>
 									<div class="col-lg-10">
-										<select id="service" name="service" class="form-control">
+										<select id="scheduleService" name="service" class="form-control">
 											<option value="-1">Select a Service</option>
 											<?php foreach($servicesArr as $service){ ?>
 												<option value="<?php echo $service['Id']?>"><?= $service['name']; ?></option>
@@ -128,7 +146,7 @@
 								<div class="form-group">
 									<label for="client" class="col-lg-2 control-label">Client:</label>
 									<div class="col-lg-10">
-										<select id="client" name="client" class="form-control">
+										<select id="scheduleClient" name="client" class="form-control">
 											<option value="-1">Select a Client</option>
 											<?php foreach($clientsArr as $client){ ?> 
 												<option value="<?php echo $client['Id']?>"><?= $client['full_name']; ?></option>
@@ -138,23 +156,44 @@
 								</div>
 								<div class="form-group">
 									<div class="col-lg-10 col-lg-offset-2">
-										<a href="#" class="btn btn-default">Search</a>
+										<a class="btn btn-default">Add</a>
+										<a class="btn btn-default" id="filterSchedule">Filter</a>
 									</div>
 								</div>
 							</form>
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>
+										<th>Client</th>
+										<th>Service</th>
+										<th>Start Date</th>
+										<th>End Date</th>
+									</tr>
+								</thead>
+								<tbody>
+								<?php foreach($schedulesArr as $schedule){?>
+									<tr>
+										<td><?= $schedule['first_name']." ".$schedule['last_name'];?></td>
+										<td><?= $schedule['name'];?></td>
+										<td><?= $schedule['startDate']; ?></td>
+										<td><?= $schedule['endDate'];?></td>
+									</tr>
+								<?php } ?>
+								</tbody>
+							</table>
 						</article>
 					</div>
 					<div class="well">
-						<h2>Requests</h2>
+						<h2>Service Requests</h2>
 						<table class="table table-striped table-hover">
 							<tbody>
-							<?php foreach($requests as $request){?>
+							<?php foreach($servicesRequestArr as $request){?>
 								<tr>
+									<td id="request<?=$request['Id'];?>" class="hidden"></td>
 									<td><?= $request['name'];?></td>
-									<td><?= $request['client'];?></td>
-									<td><?= $request['date'];?></td>
-									<td><?= $request['time']?></td>
-									<td><a class="btn btn-default">Do Something Or Something</a></td>
+									<td><?= $request['first_name']." ". $request['last_name'];?></td>
+									<td><?= $request['Date'];?></td>
+									<td><a class="btn btn-default" class="deleteServiceRequest" data-id="<?= $request['Id'];?>">Delete</a></td>
 								</tr>
 							<?php } ?>
 							</tbody>

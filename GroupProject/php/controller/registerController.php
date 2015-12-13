@@ -10,6 +10,7 @@
 	$emailAddress = $_POST["emailAddress"];
 	$phoneNumber = $_POST["phoneNumber"];
 	$password = $_POST["password"];
+	$organizationId = $_POST['organizationId'];
 	include_once "../dbConfig.php";
 	
 	$registerResponse = array("success" => FALSE);
@@ -61,9 +62,36 @@
 		if($query->rowCount() == 1){
 			$registerResponse['success'] = TRUE;
 		}
+		$lastId = $db->lastInsertId();
 	} catch(PDOException $ex) {
 		$registerResponse['errorMessage'] = $ex->getMessage();
 	}
-	
+
+	if(!empty($organizationId) && isset($organizationId))
+	{
+		try {
+			$query = $db->prepare
+			("
+				INSERT INTO 
+					userOrganization
+					(
+						user_Id,
+						organization_Id
+					)
+				VALUES 
+				 	(
+				 		?,
+				 		?
+			 		);
+			");
+		
+			$query->execute(array(
+				$lastId, 
+				$organizationId));
+			
+		} catch(PDOException $ex) {
+			echo $ex->getMessage();
+		}
+	}
 	echo json_encode($registerResponse);
 ?>

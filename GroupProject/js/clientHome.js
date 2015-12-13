@@ -1,6 +1,7 @@
 $(document).ready( function() {
 	contactInfo();
 	serviceRequest();
+	joinOrganization();
 });
 
 function contactInfo(){
@@ -75,6 +76,54 @@ function serviceRequest(){
 					alert('An error has occured! Error in console.');
 					console.log(response.errorMessage);
 				}
+			}
+		});  
+	});
+};
+
+function joinOrganization(){
+    var joinOrganizationForm = $('#joinOrganizationForm');
+
+    $("#joinOrganizationForm input").on("blur", function() {
+    	if(joinOrganizationForm.hasClass("dirty")){
+    		validateForm("joinOrganizationForm");
+    	}
+    });
+
+
+    $("#joinOrganizationSubmit").on("click", function() {
+    	//The user has tried submitting once so from here
+    	//on out we can check to remove validation after typing
+    	joinOrganizationForm.addClass("dirty");
+
+    	var valid = validateForm("joinOrganizationForm");
+
+		if(!valid) { 
+			return;
+		}
+		
+		$.ajax( {
+			type: "POST",
+			url: "php/controller/userHome/joinOrganizationController.php",
+			data: joinOrganizationForm.serialize(),
+			dataType: "json",
+			success: function(response) {
+				if(response.success){
+					var well = $("#joinOrganizationForm").parent();
+					var success = '<div class="alertalert-success">' + 
+									'You have successfully joined the organization <strong>'+ response.newOrganization.name +'</strong>' +
+									'</div>';
+					$("#joinOrganizationForm").remove();
+					well.append(success).fadeIn();
+				} else {
+					var errorMessage = "Invalid Organization Key. Please make sure you are using the key"
+										+ " provided to you by your supervisor.";
+					var invalidKeyBlock = "<span class='help-block error'>"+ errorMessage +"</span>";
+		    		$("#joinOrganizationKey").parent().append(invalidKeyBlock);
+				}
+			},
+			complete: function() {
+				joinOrganizationForm.trigger("reset");
 			}
 		});  
 	});

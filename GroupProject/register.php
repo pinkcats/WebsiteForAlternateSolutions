@@ -93,6 +93,31 @@
       								</div>
     							</div>
 
+                  <div class="form-group hidden" id="organizationKeyDiv">
+                      <label for="organizationKey" class="col-lg-2 control-label">Organization Key</label>
+                      <div class="col-lg-10">
+                        <input type="text" class="form-control" id="organizationKey" name="organizationKey">
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="isStaff" class="col-lg-2 control-label">Belong to an Organization?</label>
+                      <div class="col-lg-10">
+                        <div class="radio">
+                            <label>
+                              <input type="radio" name="isOrganization" value="1">
+                                Yes
+                            </label>
+                      </div>
+                        <div class="radio">
+                            <label>
+                              <input type="radio" name="isOrganization" value="0" checked="">
+                                No
+                              </label>
+                        </div>
+                      </div>
+                  </div>
+
     							<div class="form-group">
       								<label for="isStaff" class="col-lg-2 control-label">Staff</label>
       								<div class="col-lg-10">
