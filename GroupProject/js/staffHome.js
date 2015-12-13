@@ -2,21 +2,52 @@ $(document).ready( function() {
 	addSidebarLink();
 	editSidebarLink();
 	deleteSidebarLink();
-	nameUpdate();
 	addOrganization();
 	deleteOrganization();
 	deleteServiceRequest();
 	deleteContactRequest();
 	filterSchedule();
+	contactInfo();
 });
 
-function nameUpdate(){
-	// this must be added after the contactInfo is on the page
-	// and can be edited
-	// add a span where the welcome message is
-	// var firstName = $("#firstName").val();
-	// var lastName = $("#lastName").val();
-	// jquery select the id and .text(firstName + " " + lastName);
+function contactInfo(){	
+	var firstName = $("#myInfoFirstName").val();
+	var lastName = $("#myInfoLastName").val();
+	$("#staffWelcome").text(firstName + " " + lastName);
+
+    var myContactInfoForm = $('#myContactInfoForm');
+
+    $("#myContactInfoForm input").on("blur", function() {
+    	if(myContactInfoForm.hasClass("dirty")){
+    		validateForm("myContactInfoForm");
+    	}
+    });
+
+    $("#myContactInfoSave").on("click", function() {
+    	//The user has tried submitting once so from here
+    	//on out we can check to remove validation after typing
+		
+    	myContactInfoForm.addClass("dirty");
+    	var valid = validateForm("myContactInfoForm");
+		if(!valid) { 
+			return;
+		}
+		
+		$.ajax( {
+			type: "POST",
+			url: "php/controller/contactInfoController.php",
+			data: myContactInfoForm.serialize(),
+			dataType: "json",
+			success: function(response) {
+				if(response.success){
+					window.location = "staffHome.php";
+				} else {
+					alert('An error has occured! Error in console.');
+					console.log(response.errorMessage);
+				}
+			}
+		});  
+	});
 };
 
 function deleteServiceRequest (){

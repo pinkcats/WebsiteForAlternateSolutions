@@ -1,7 +1,7 @@
 <?php
 	include_once "dbConfig.php";
 	try{
-		$sidebarLinks = $db->prepare("SELECT Id, title, link, (isArchived + 0) AS isArchived FROM sidebarLinks WHERE isArchived != '0'");
+		$sidebarLinks = $db->prepare("SELECT Id, title, link, (isArchived + 0) AS isArchived FROM sidebarLinks WHERE isArchived = 0");
 		$sidebarLinks->execute(array());
 		$sidebarLinksArr = $sidebarLinks->fetchAll(PDO::FETCH_ASSOC);
 	}catch (PDOException $ex){

@@ -64,6 +64,15 @@
 		echo "Something went wrong with getting the service requests";
 		echo $ex->getMessage();
 	}
+
+	try {
+		$query = $db->prepare("SELECT u.first_name, u.last_name, u.email, u.phone_number, u.address, u.city, u.state, u.zip_code FROM users as u WHERE u.Id = ?");
+		$query->execute(array($staffId));
+		$contactInfo = $query->fetchAll(PDO::FETCH_ASSOC);
+	} catch(PDOException $ex) {
+		echo "Something went wrong with getting the contact information"; 
+		echo $ex->getMessage();
+	}
 ?>
 
 <!DOCTYPE html>
@@ -99,193 +108,280 @@
 				
 			    <div class="col-md-9">
 					<h1 id="sec0" style="text-align:center;">
-					Welcome, <?= $staffFirstName . " " . $staffLastName; ?>
+					Welcome, <span id="staffWelcome"></span>
 					</h1>
 					<hr/>
-					<div class="well">
-					<h2>Clients</h2>
-						<table class="table table table-striped table-hover">
-							<tbody>
-								<?php foreach($clientsArr as $client){ ?>
-									<tr>
-										<td><h3><?= $client['full_name'];?></h3></td>
-										<td class="text-right"><a href="clientView.php?Id=<?= $client['Id']?>" class="btn btn-default">View</a></td>
-									</tr>
-								<?php } ?>
-							</tbody>
-						</table>
-					</div>
-					<div class="well">
-						<h2>Schedule</h2>
-						<article>
-							<form class="form-horizontal" id="filterScheduleForm">
-								<div class="form-group">
-									<label for="startDate" class="col-lg-2 control-label">Start Date:</label>
-									<div class="col-lg-10">
-										<input type="text" class="form-control" id="scheduleStartDate" name="startDate" />
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#myInfo" data-toggle="tab" aria-expanded="false">My Information</a></li>
+						<li><a href="#clients" data-toggle="tab" aria-expanded="false">Clients</a></li>
+						<li><a href="#serviceAndSchedule" data-toggle="tab" aria-expanded="false">Schedule</a></li>
+						<li><a href="#sidebarContent" data-toggle="tab" aria-expanded="false">Sidebar Content</a></li>
+						<li><a href="#organizations" data-toggle="tab" aria-expanded="false">Organizations</a></li>
+						<li><a href="#contactRequests" data-toggle="tab" aria-expanded="false">Contact Requests</a></li>
+					</ul>
+					<div id="myTabContent" class="tab-content">
+						<div class="well tab-pane fade active in" id="myInfo">
+							<article>
+								<h3>My Information</h3>
+								<form id="myContactInfoForm" class="form-horizontal">
+									<div class="form-group hidden">
+										<label for="myInfoId" class="col-lg-2 control-label">
+										Id:</label>
+										<div class="col-lg-10">
+											<input type="text" class="form-control" id="myInfoId" name="Id" value="<?php echo $staffId;?>"/>
+										</div>
 									</div>
-								</div>
-								<div class="form-group">
-									<label for="endDate" class="col-lg-2 control-label">End Date:</label>
-									<div class="col-lg-10">
-										<input type="text" class="form-control" id="scheduleEndDate" name="endDate"/>
+									<div class="form-group">
+										<label for="myInfoFirstName" class="col-lg-2 control-label">
+										First Name:</label>
+										<div class="col-lg-10">
+											<input type="text" class="form-control" id="myInfoFirstName" name="firstName" value="<?php echo $contactInfo[0]["first_name"];?>"/>
+										</div>
 									</div>
-								</div>
-								<div class="form-group">
-									<label for="service" class="col-lg-2 control-label">Service:</label>
-									<div class="col-lg-10">
-										<select id="scheduleService" name="service" class="form-control">
-											<option value="-1">Select a Service</option>
-											<?php foreach($servicesArr as $service){ ?>
-												<option value="<?php echo $service['Id']?>"><?= $service['name']; ?></option>
-											<?php } ?>
-										</select>
+									<div class="form-group">
+										<label for="myInfoLastName" class="col-lg-2 control-label">
+										Last Name:</label>
+										<div class="col-lg-10">
+											<input type="text" class="form-control" id="myInfoLastName" name="lastName" value="<?php echo $contactInfo[0]["last_name"];?>"/>
+										</div>
 									</div>
-								</div>
-								<div class="form-group">
-									<label for="client" class="col-lg-2 control-label">Client:</label>
-									<div class="col-lg-10">
-										<select id="scheduleClient" name="client" class="form-control">
-											<option value="-1">Select a Client</option>
-											<?php foreach($clientsArr as $client){ ?> 
-												<option value="<?php echo $client['Id']?>"><?= $client['full_name']; ?></option>
-											<?php } ?>
-										</select>
+									<div class="form-group">
+										<label for="myInfoEmail" class="col-lg-2 control-label">
+										 Email:</label>
+										<div class="col-lg-10">
+											<input type="text" class="form-control" id="myInfoEmail" name="email" data-type="emailAddress" value="<?php echo $contactInfo[0]["email"];?>"/>
+										</div>
 									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-lg-10 col-lg-offset-2">
-										<a class="btn btn-default">Add</a>
-										<a class="btn btn-default" id="filterSchedule">Filter</a>
+									<div class="form-group">
+										<label for="myInfoPhone" class="col-lg-2 control-label">
+										Phone Number:</label>
+										<div class="col-lg-10">
+											<input type="text" class="form-control" id="myInfoPhone" name="phone" data-type="phoneNumber" value="<?php echo $contactInfo[0]["phone_number"];?>"/>
+										</div>
 									</div>
-								</div>
-							</form>
-							<table class="table table-striped table-hover">
-								<thead>
-									<tr>
-										<th>Client</th>
-										<th>Service</th>
-										<th>Start Date</th>
-										<th>End Date</th>
-									</tr>
-								</thead>
+									<div class="form-group">
+										<label for="myInfoAddress" class="col-lg-2 control-label">
+										Address:</label>
+										<div class="col-lg-10">
+											<input type="text" class="form-control" id="myInfoAddress" name="address" value="<?php echo $contactInfo[0]["address"];?>"/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="myInfoCity" class="col-lg-2 control-label">
+										City:</label>
+										<div class="col-lg-10">
+											<input type="text" class="form-control" id="myInfoCity" name="city" value="<?php echo $contactInfo[0]["city"];?>"/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="myInfoState" class="col-lg-2 control-label">
+										State:</label>
+										<div class="col-lg-10">
+											<input type="text" class="form-control" id="myInfoState" name="state" value="<?php echo $contactInfo[0]["state"];?>"/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="myInfoZipcode" class="col-lg-2 control-label">
+										Zipcode:</label>
+										<div class="col-lg-10">
+											<input type="text" class="form-control" id="myInfoZipcode" name="zipcode" data-type="zipCode" value="<?php echo $contactInfo[0]["zip_code"];?>"/>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-lg-10 col-lg-offset-2">
+											<a id="myContactInfoSave" class="btn btn-default">Save</a>
+										</div>
+									</div>
+								</form>
+							</article>
+						</div>
+						<div class="well tab-pane fade" id="clients">
+						<h2>Clients</h2>
+							<table class="table table table-striped table-hover">
 								<tbody>
-								<?php foreach($schedulesArr as $schedule){?>
-									<tr>
-										<td><?= $schedule['first_name']." ".$schedule['last_name'];?></td>
-										<td><?= $schedule['name'];?></td>
-										<td><?= $schedule['startDate']; ?></td>
-										<td><?= $schedule['endDate'];?></td>
-									</tr>
-								<?php } ?>
-								</tbody>
-							</table>
-						</article>
-					</div>
-					<div class="well">
-						<h2>Service Requests</h2>
-						<table class="table table-striped table-hover">
-							<tbody>
-							<?php foreach($servicesRequestArr as $request){?>
-								<tr>
-									<td id="request<?=$request['Id'];?>" class="hidden"></td>
-									<td><?= $request['name'];?></td>
-									<td><?= $request['first_name']." ". $request['last_name'];?></td>
-									<td><?= $request['Date'];?></td>
-									<td><a class="btn btn-default deleteServiceRequest" data-id="<?= $request['Id'];?>">Delete</a></td>
-								</tr>
-							<?php } ?>
-							</tbody>
-						</table>
-					</div>
-					<div class="well">
-						<article>
-							<h2>Sidebar Content</h2>
-							<button type="button" class="btn btn-default" data-toggle="modal" data-target="#addSidebarLinkModal">
-								Add
-							</button>
-							<table class="table table-striped table-hover" id="sidebarLinksTable">
-								<thead>
-									<tr>
-										<th>Title</th>
-										<th>Link</th>
-										<th>Archived</th>
-										<th></th>
-										<th></th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php foreach($sidebarLinksArr as $link){ ?>
+									<?php foreach($clientsArr as $client){ ?>
 										<tr>
-											<td id="title<?= $link['Id']; ?>"><?= $link['title']; ?></td>
-											<td id="link<?= $link['Id']; ?>"><a target="_blank" href="<?= $link['link']; ?>"><?= $link['link']; ?></a></td>
-											<td id="isArchived<?= $link['Id']; ?>"><?= $link['isArchived']; ?></td>
-											<td class="text-right"><button type="button" class="btn btn-default editSidebarLink" data-id="<?= $link['Id']; ?>">Edit</button></td>
-											<td class="text-right"><button type="button" class="btn btn-default deleteSidebarLink" data-id="<?= $link['Id']; ?>">Delete</button></td>
+											<td><h3><?= $client['full_name'];?></h3></td>
+											<td class="text-right"><a href="clientView.php?Id=<?= $client['Id']?>" class="btn btn-default">View</a></td>
 										</tr>
 									<?php } ?>
 								</tbody>
 							</table>
-						</article>
-					</div>
-					<div class="well">
-						<article>
-							<h2>Organizations</h2>
-							<button type="button" class="btn btn-default" data-toggle="modal" data-target="#addOrganizationModal">
-								Add
-							</button>
-							<table class="table table-striped table-hover" id="organizationsTable">
-								<thead>
-									<tr>
-										<th>Name</th>
-										<th>Key</th>
-										<th></th>
-										<th></th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php foreach($organizationsArr as $organization){ ?>
+						</div>
+						<div class="tab-pane fade" id="serviceAndSchedule">
+							<div class="well">
+								<h2>Schedule</h2>
+								<article>
+									<form class="form-horizontal" id="filterScheduleForm">
+										<div class="form-group">
+											<label for="startDate" class="col-lg-2 control-label">Start Date:</label>
+											<div class="col-lg-10">
+												<input type="text" class="form-control" id="scheduleStartDate" name="startDate" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="endDate" class="col-lg-2 control-label">End Date:</label>
+											<div class="col-lg-10">
+												<input type="text" class="form-control" id="scheduleEndDate" name="endDate"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="service" class="col-lg-2 control-label">Service:</label>
+											<div class="col-lg-10">
+												<select id="scheduleService" name="service" class="form-control">
+													<option value="-1">Select a Service</option>
+													<?php foreach($servicesArr as $service){ ?>
+														<option value="<?php echo $service['Id']?>"><?= $service['name']; ?></option>
+													<?php } ?>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="client" class="col-lg-2 control-label">Client:</label>
+											<div class="col-lg-10">
+												<select id="scheduleClient" name="client" class="form-control">
+													<option value="-1">Select a Client</option>
+													<?php foreach($clientsArr as $client){ ?> 
+														<option value="<?php echo $client['Id']?>"><?= $client['full_name']; ?></option>
+													<?php } ?>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-lg-10 col-lg-offset-2">
+												<a class="btn btn-default">Add</a>
+												<a class="btn btn-default" id="filterSchedule">Filter</a>
+											</div>
+										</div>
+									</form>
+									<table class="table table-striped table-hover">
+										<thead>
+											<tr>
+												<th>Client</th>
+												<th>Service</th>
+												<th>Start Date</th>
+												<th>End Date</th>
+											</tr>
+										</thead>
+										<tbody>
+										<?php foreach($schedulesArr as $schedule){?>
+											<tr>
+												<td><?= $schedule['first_name']." ".$schedule['last_name'];?></td>
+												<td><?= $schedule['name'];?></td>
+												<td><?= $schedule['startDate']; ?></td>
+												<td><?= $schedule['endDate'];?></td>
+											</tr>
+										<?php } ?>
+										</tbody>
+									</table>
+								</article>
+							</div>
+							<div class="well">
+								<h2>Service Requests</h2>
+								<table class="table table-striped table-hover">
+									<tbody>
+									<?php foreach($servicesRequestArr as $request){?>
 										<tr>
-											<td id="organizationName<?= $organization['Id']; ?>"><?= $organization['name']; ?></td>
-											<td id="organizationKey<?= $organization['Id']; ?>"><?= $organization['organizationKey']; ?></td>
-											<td id="organizationEmail<?= $organization['Id']; ?>"><?= $organization['email']; ?></td>
-											<td class="hidden" id="organizationAddress<?= $organization['Id']; ?>"><?= $organization['address']; ?></td>
-											<td class="hidden" id="organizationCity<?= $organization['Id']; ?>"><?= $organization['city']; ?></td>
-											<td class="hidden" id="organizationState<?= $organization['Id']; ?>"><?= $organization['state']; ?></td>
-											<td class="hidden" id="organizationzipCode<?= $organization['Id']; ?>"><?= $organization['zip_code']; ?></td>
-											<td class="text-right"><button type="button" class="btn btn-default editOrganization" data-id="<?= $organization['Id']; ?>">Edit</button></td>
-											<td class="text-right"><button type="button" class="btn btn-default deleteOrganization" data-id="<?= $organization['Id']; ?>">Delete</button></td>
+											<td id="request<?=$request['Id'];?>" class="hidden"></td>
+											<td><?= $request['name'];?></td>
+											<td><?= $request['first_name']." ". $request['last_name'];?></td>
+											<td><?= $request['Date'];?></td>
+											<td><a class="btn btn-default deleteServiceRequest" data-id="<?= $request['Id'];?>">Delete</a></td>
 										</tr>
 									<?php } ?>
-								</tbody>
-							</table>
-						</article>
-					</div>
-					<div class="well">
-						<article>
-							<h2>Contact Requests</h2>
-							<table class="table table-striped table-hover">
-								<thead>
-									<tr>
-										<th class="hidden">Id</th>
-										<th>Name</th>
-										<th>Email</th>
-										<th>Request</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php foreach($contactRequestsArr as $contact){ ?>
-									<tr>
-										<td id="contactRequest<?=$contact['Id'];?>" class="hidden"><?= $contact['Id'];?></td>
-										<td><?= $contact['name'];?></td>
-										<td><?= $contact['email'];?></td>
-										<td><?= $contact['request'];?></td>
-										<td class="text-right"><button type="button" class="btn btn-default deleteContactRequest" data-id="<?= $contact['Id']; ?>">Delete</button></td>
-									</tr>
-									<?php } ?>
-								</tbody>
-							</table>
-						</article>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="well tab-pane fade" id="sidebarContent">
+							<article>
+								<h2>Sidebar Content</h2>
+								<button type="button" class="btn btn-default" data-toggle="modal" data-target="#addSidebarLinkModal">
+									Add
+								</button>
+								<table class="table table-striped table-hover" id="sidebarLinksTable">
+									<thead>
+										<tr>
+											<th>Title</th>
+											<th>Link</th>
+											<th>Archived</th>
+											<th></th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php foreach($sidebarLinksArr as $link){ ?>
+											<tr>
+												<td id="title<?= $link['Id']; ?>"><?= $link['title']; ?></td>
+												<td id="link<?= $link['Id']; ?>"><a target="_blank" href="<?= $link['link']; ?>"><?= $link['link']; ?></a></td>
+												<td id="isArchived<?= $link['Id']; ?>"><?= $link['isArchived']; ?></td>
+												<td class="text-right"><button type="button" class="btn btn-default editSidebarLink" data-id="<?= $link['Id']; ?>">Edit</button></td>
+												<td class="text-right"><button type="button" class="btn btn-default deleteSidebarLink" data-id="<?= $link['Id']; ?>">Delete</button></td>
+											</tr>
+										<?php } ?>
+									</tbody>
+								</table>
+							</article>
+						</div>
+						<div class="well tab-pane fade" id="organizations">
+							<article>
+								<h2>Organizations</h2>
+								<button type="button" class="btn btn-default" data-toggle="modal" data-target="#addOrganizationModal">
+									Add
+								</button>
+								<table class="table table-striped table-hover" id="organizationsTable">
+									<thead>
+										<tr>
+											<th>Name</th>
+											<th>Key</th>
+											<th></th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php foreach($organizationsArr as $organization){ ?>
+											<tr>
+												<td id="organizationName<?= $organization['Id']; ?>"><?= $organization['name']; ?></td>
+												<td id="organizationKey<?= $organization['Id']; ?>"><?= $organization['organizationKey']; ?></td>
+												<td id="organizationEmail<?= $organization['Id']; ?>"><?= $organization['email']; ?></td>
+												<td class="hidden" id="organizationAddress<?= $organization['Id']; ?>"><?= $organization['address']; ?></td>
+												<td class="hidden" id="organizationCity<?= $organization['Id']; ?>"><?= $organization['city']; ?></td>
+												<td class="hidden" id="organizationState<?= $organization['Id']; ?>"><?= $organization['state']; ?></td>
+												<td class="hidden" id="organizationzipCode<?= $organization['Id']; ?>"><?= $organization['zip_code']; ?></td>
+												<td class="text-right"><button type="button" class="btn btn-default editOrganization" data-id="<?= $organization['Id']; ?>">Edit</button></td>
+												<td class="text-right"><button type="button" class="btn btn-default deleteOrganization" data-id="<?= $organization['Id']; ?>">Delete</button></td>
+											</tr>
+										<?php } ?>
+									</tbody>
+								</table>
+							</article>
+						</div>
+						<div class="well tab-pane fade" id="contactRequests">
+							<article>
+								<h2>Contact Requests</h2>
+								<table class="table table-striped table-hover">
+									<thead>
+										<tr>
+											<th class="hidden">Id</th>
+											<th>Name</th>
+											<th>Email</th>
+											<th>Request</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php foreach($contactRequestsArr as $contact){ ?>
+										<tr>
+											<td id="contactRequest<?=$contact['Id'];?>" class="hidden"><?= $contact['Id'];?></td>
+											<td><?= $contact['name'];?></td>
+											<td><?= $contact['email'];?></td>
+											<td><?= $contact['request'];?></td>
+											<td class="text-right"><button type="button" class="btn btn-default deleteContactRequest" data-id="<?= $contact['Id']; ?>">Delete</button></td>
+										</tr>
+										<?php } ?>
+									</tbody>
+								</table>
+							</article>
+						</div>
 					</div>
 				</div> 
 			</div>
