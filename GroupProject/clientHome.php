@@ -68,192 +68,202 @@
 					Welcome, <span id="userWelcome"></span>!
 					</h1>
 					<hr/>
-					<div class="well">
-						<article>
-							<h3>Contact Information</h3>
-							<form id="contactInfoForm" class="form-horizontal">
-								<div class="form-group hidden">
-									<label for="Id" class="col-lg-2 control-label">
-									Id:</label>
-									<div class="col-lg-10">
-										<input type="text" class="form-control" id="Id" name="Id" value="<?php echo $userId;?>"/>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="firstName" class="col-lg-2 control-label">
-									First Name:</label>
-									<div class="col-lg-10">
-										<input type="text" class="form-control" id="firstName" name="firstName" value="<?php echo $contactInfo[0]["first_name"];?>"/>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="lastName" class="col-lg-2 control-label">
-									Last Name:</label>
-									<div class="col-lg-10">
-										<input type="text" class="form-control" id="lastName" name="lastName" value="<?php echo $contactInfo[0]["last_name"];?>"/>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="email" class="col-lg-2 control-label">
-									 Email:</label>
-									<div class="col-lg-10">
-										<input type="text" class="form-control" id="email" name="email" data-type="emailAddress" value="<?php echo $contactInfo[0]["email"];?>"/>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="phone" class="col-lg-2 control-label">
-									Phone Number:</label>
-									<div class="col-lg-10">
-										<input type="text" class="form-control" id="phone" name="phone" data-type="phoneNumber" value="<?php echo $contactInfo[0]["phone_number"];?>"/>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="address" class="col-lg-2 control-label">
-									Address:</label>
-									<div class="col-lg-10">
-										<input type="text" class="form-control" id="address" name="address" value="<?php echo $contactInfo[0]["address"];?>"/>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="city" class="col-lg-2 control-label">
-									City:</label>
-									<div class="col-lg-10">
-										<input type="text" class="form-control" id="city" name="city" value="<?php echo $contactInfo[0]["city"];?>"/>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="state" class="col-lg-2 control-label">
-									State:</label>
-									<div class="col-lg-10">
-										<input type="text" class="form-control" id="state" name="state" value="<?php echo $contactInfo[0]["state"];?>"/>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="zipcode" class="col-lg-2 control-label">
-									Zipcode:</label>
-									<div class="col-lg-10">
-										<input type="text" class="form-control" id="zipcode" name="zipcode" data-type="zipCode" value="<?php echo $contactInfo[0]["zip_code"];?>"/>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-lg-10 col-lg-offset-2">
-										<a id="contactInfoSave" class="btn btn-default">Save</a>
-									</div>
-								</div>
-							</form>
-						</article>
-					</div>
-					<div class="well">
-						<article>
-							<h3>Organization Information</h3>
-							<form id="joinOrganizationForm" class="form-horizontal">
-								<?php 
-									if(!empty($organizationInfo)){
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#info" data-toggle="tab" aria-expanded="false">Information</a></li>
+						<li><a href="#services" data-toggle="tab" aria-expanded="false">Services</a></li>
+					</ul>
+					<div id="myTabContent" class="tab-content">
+						<div class="tab-pane fade active in" id="info">
+							<div class="well">
+								<article>
+									<h3>Contact Information</h3>
+									<form id="contactInfoForm" class="form-horizontal">
+										<div class="form-group hidden">
+											<label for="Id" class="col-lg-2 control-label">
+											Id:</label>
+											<div class="col-lg-10">
+												<input type="text" class="form-control" id="Id" name="Id" value="<?php echo $userId;?>"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="firstName" class="col-lg-2 control-label">
+											First Name:</label>
+											<div class="col-lg-10">
+												<input type="text" class="form-control" id="firstName" name="firstName" value="<?php echo $contactInfo[0]["first_name"];?>"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="lastName" class="col-lg-2 control-label">
+											Last Name:</label>
+											<div class="col-lg-10">
+												<input type="text" class="form-control" id="lastName" name="lastName" value="<?php echo $contactInfo[0]["last_name"];?>"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="email" class="col-lg-2 control-label">
+											 Email:</label>
+											<div class="col-lg-10">
+												<input type="text" class="form-control" id="email" name="email" data-type="emailAddress" value="<?php echo $contactInfo[0]["email"];?>"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="phone" class="col-lg-2 control-label">
+											Phone Number:</label>
+											<div class="col-lg-10">
+												<input type="text" class="form-control" id="phone" name="phone" data-type="phoneNumber" value="<?php echo $contactInfo[0]["phone_number"];?>"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="address" class="col-lg-2 control-label">
+											Address:</label>
+											<div class="col-lg-10">
+												<input type="text" class="form-control" id="address" name="address" value="<?php echo $contactInfo[0]["address"];?>"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="city" class="col-lg-2 control-label">
+											City:</label>
+											<div class="col-lg-10">
+												<input type="text" class="form-control" id="city" name="city" value="<?php echo $contactInfo[0]["city"];?>"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="state" class="col-lg-2 control-label">
+											State:</label>
+											<div class="col-lg-10">
+												<input type="text" class="form-control" id="state" name="state" value="<?php echo $contactInfo[0]["state"];?>"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="zipcode" class="col-lg-2 control-label">
+											Zipcode:</label>
+											<div class="col-lg-10">
+												<input type="text" class="form-control" id="zipcode" name="zipcode" data-type="zipCode" value="<?php echo $contactInfo[0]["zip_code"];?>"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-lg-10 col-lg-offset-2">
+												<a id="contactInfoSave" class="btn btn-default">Save</a>
+											</div>
+										</div>
+									</form>
+								</article>
+							</div>
+							<div class="well">
+								<article>
+									<h3>Organization Information</h3>
+									<form id="joinOrganizationForm" class="form-horizontal">
+										<?php 
+											if(!empty($organizationInfo)){
+												?>
+													<div class="form-group">
+														<div class="col-lg-12">
+															<p><strong>Organization Name: </strong><span><?= $organizationInfo[0]["name"]; ?></span><p>
+														</div>
+														<div class="col-lg-12">
+															<p><strong>Organization Contact Email: </strong><span><?= $organizationInfo[0]["email"]; ?></span></p>
+														</div>
+													</div>
+												<?php
+											} else {
+												?>
+													<div class="form-group">
+														<label for="joinOrganizationKey" class="col-lg-2 control-label">
+														Key:</label>
+														<div class="col-lg-10">
+															<input type="text" class="form-control" id="joinOrganizationKey" name="joinOrganizationKey"/>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-lg-10 col-lg-offset-2">
+															<a id="joinOrganizationSubmit" class="btn btn-default">Join Organization</a>
+														</div>
+													</div>
+												<?php
+											}
 										?>
-											<div class="form-group">
-												<div class="col-lg-12">
-													<p><strong>Organization Name: </strong><span><?= $organizationInfo[0]["name"]; ?></span><p>
-												</div>
-												<div class="col-lg-12">
-													<p><strong>Organization Contact Email: </strong><span><?= $organizationInfo[0]["email"]; ?></span></p>
-												</div>
+										
+									</form>
+								</article>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="services">
+							<div class="well">
+								<article>
+									<h3>Schedule of Services</h3>
+									<form class="form-horizontal">
+										<div class="form-group">
+											<label for="startDate" class="col-lg-2 control-label">
+											Start Date:
+											</label>
+											<div class="col-lg-10">
+												<input type="text" class="form-control" id="startDate" name="startDate"/>
 											</div>
-										<?php
-									} else {
-										?>
-											<div class="form-group">
-												<label for="joinOrganizationKey" class="col-lg-2 control-label">
-												Key:</label>
-												<div class="col-lg-10">
-													<input type="text" class="form-control" id="joinOrganizationKey" name="joinOrganizationKey"/>
-												</div>
+										</div>
+										<div class="form-group">
+											<label for="endDate" class="col-lg-2 control-label">
+											End Date:</label>
+											<div class="col-lg-10">
+												<input type="text" class="form-control" id="endDate" name="endDate"/>
 											</div>
-											<div class="form-group">
-												<div class="col-lg-10 col-lg-offset-2">
-													<a id="joinOrganizationSubmit" class="btn btn-default">Join Organization</a>
-												</div>
+										</div>
+										<div class="form-group">
+											<div class="col-lg-10 col-lg-offset-2">
+												<a href="#" class="btn btn-default">Submit</a>
 											</div>
-										<?php
-									}
-								?>
-								
-							</form>
-						</article>
-					</div>
-					<div class="well">
-						<article>
-							<h3>Schedule of Services</h3>
-							<form class="form-horizontal">
-								<div class="form-group">
-									<label for="startDate" class="col-lg-2 control-label">
-									Start Date:
-									</label>
-									<div class="col-lg-10">
-										<input type="text" class="form-control" id="startDate" name="startDate"/>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="endDate" class="col-lg-2 control-label">
-									End Date:</label>
-									<div class="col-lg-10">
-										<input type="text" class="form-control" id="endDate" name="endDate"/>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-lg-10 col-lg-offset-2">
-										<a href="#" class="btn btn-default">Submit</a>
-									</div>
-								</div>
-								<table class="table">
-									<tbody>
-										<?php foreach($services as $service){ ?> 
-											<tr>
-												<td><?= $service['name']; ?></td>
-												<td><a class="btn btn-default">Schedule</a></td>
-											</tr>
-										<?php } ?>
-									</tbody>
-								</table>
-							</form>
-						</article>
-					</div>
-					<div class="well">
-						<article>
-							<h3>Request Service</h3>
-							<form id="serviceRequestForm" class="form-horizontal">
-								<div class="form-group">
-									<label for="service" class="col-lg-2 control-label">
-									Service:</label>
-									<div class="col-lg-10">
-										<select id="serviceRequesterService" name="service" class="form-control">
-											<option value="-1">Select a Service</option>
-											<?php foreach($servicesArr as $service){ ?>
-												<option value="<?php echo $service['Id']?>"><?= $service['name']; ?></option>
-											<?php } ?>
-										</select>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="date" class="col-lg-2 control-label">
-									Date:</label>
-									<div class="col-lg-10">
-										<input type="date" class="form-control" id="serviceRequesterDate" name="date" placeholder="mm/dd/yyyy" />
-									</div>
-								</div>
-								<div class="form-group hidden">
-									<label for="Id" class="col-lg-2 control-label">
-									Id:</label>
-									<div class="col-lg-10">
-										<input type="text" class="form-control" id="serviceRequesterId" name="Id" value="<?php echo $userId; ?>"/>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-lg-10 col-lg-offset-2">
-										<a id="serviceRequesterSubmit" class="btn btn-default">Submit</a>
-									</div>
-								</div>
-							</form>
-						</article>
+										</div>
+										<table class="table">
+											<tbody>
+												<?php foreach($services as $service){ ?> 
+													<tr>
+														<td><?= $service['name']; ?></td>
+														<td><a class="btn btn-default">Schedule</a></td>
+													</tr>
+												<?php } ?>
+											</tbody>
+										</table>
+									</form>
+								</article>
+							</div>
+							<div class="well">
+								<article>
+									<h3>Request Service</h3>
+									<form id="serviceRequestForm" class="form-horizontal">
+										<div class="form-group">
+											<label for="service" class="col-lg-2 control-label">
+											Service:</label>
+											<div class="col-lg-10">
+												<select id="serviceRequesterService" name="service" class="form-control">
+													<option value="-1">Select a Service</option>
+													<?php foreach($servicesArr as $service){ ?>
+														<option value="<?php echo $service['Id']?>"><?= $service['name']; ?></option>
+													<?php } ?>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="date" class="col-lg-2 control-label">
+											Date:</label>
+											<div class="col-lg-10">
+												<input type="date" class="form-control" id="serviceRequesterDate" name="date" placeholder="mm/dd/yyyy" />
+											</div>
+										</div>
+										<div class="form-group hidden">
+											<label for="Id" class="col-lg-2 control-label">
+											Id:</label>
+											<div class="col-lg-10">
+												<input type="text" class="form-control" id="serviceRequesterId" name="Id" value="<?php echo $userId; ?>"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-lg-10 col-lg-offset-2">
+												<a id="serviceRequesterSubmit" class="btn btn-default">Submit</a>
+											</div>
+										</div>
+									</form>
+								</article>
+							</div>
+						</div>
 					</div>
 				</div> 
 			</div>
