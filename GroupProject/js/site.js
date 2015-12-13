@@ -7,12 +7,17 @@ function updateActiveHeaderItem() {
 	
 	//returns last item in path, ex "index.php"
 	var currentFile = window.location.pathname.split('/').pop();
-	currentFile = (isService(currentFile)) ? "services.php" : currentFile;
+
+	if(isService(currentFile)){
+		currentFile = "services.php";
+	} else if(isPortal(currentFile)) {
+		currentFile = "clientPortal.php";
+	}
 	
 	//then the list item of the current active link
 	var activeElement = $("a[href^='" + currentFile + "']").parent();
 	$("#navbar li").removeClass("active");
-	activeElement.addClass("active");
+	activeElement.first().addClass("active");
 
 }
 
@@ -28,6 +33,18 @@ function isService(fileName){
 			break;
 	}
 	return isServiceFile;
+}
+
+function isPortal(fileName){
+	var isPortalFile = false;
+	switch(fileName) {
+		case "clientHome.php":
+		case "staffHome.php":
+		case "clientView.php":
+			isPortalFile = true;
+			break;
+	}
+	return isPortalFile;
 }
 
 /*
