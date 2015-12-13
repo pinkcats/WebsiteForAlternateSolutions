@@ -3,7 +3,7 @@
 	include_once "php/dbConfig.php";
 	$userId = $_GET['Id'];
 	try {
-		$query = $db->prepare("");
+		$query = $db->prepare("SELECT Id, first_name, last_name, email, CONCAT(first_name, ' ', last_name) AS full_name, address, city, state, phone_number, zip_code FROM users WHERE is_staff = 0 AND Id = ?");
 		$query->execute(array($userId));
 		$contactInfo = $query->fetchAll(PDO::FETCH_ASSOC);
 	} catch(PDOException $ex) {
@@ -131,5 +131,6 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/site.js"></script>
+		<script src="js/clientHome.js"></script>
 	</body>
 </html>

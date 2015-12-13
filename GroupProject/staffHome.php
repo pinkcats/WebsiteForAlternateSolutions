@@ -109,8 +109,7 @@
 								<?php foreach($clientsArr as $client){ ?>
 									<tr>
 										<td><h3><?= $client['full_name'];?></h3></td>
-										<td><a href="#" class="btn btn-default">View</a></td>
-										<td><a href="#" class="btn btn-default">Edit</a></td>
+										<td class="text-right"><a href="clientView.php?Id=<?= $client['Id']?>" class="btn btn-default">View</a></td>
 									</tr>
 								<?php } ?>
 							</tbody>
@@ -193,7 +192,7 @@
 									<td><?= $request['name'];?></td>
 									<td><?= $request['first_name']." ". $request['last_name'];?></td>
 									<td><?= $request['Date'];?></td>
-									<td><a class="btn btn-default" class="deleteServiceRequest" data-id="<?= $request['Id'];?>">Delete</a></td>
+									<td><a class="btn btn-default deleteServiceRequest" data-id="<?= $request['Id'];?>">Delete</a></td>
 								</tr>
 							<?php } ?>
 							</tbody>
@@ -277,11 +276,11 @@
 								<tbody>
 									<?php foreach($contactRequestsArr as $contact){ ?>
 									<tr>
-										<td class="hidden"><?= $contact['Id'];?></td>
+										<td id="contactRequest<?=$contact['Id'];?>" class="hidden"><?= $contact['Id'];?></td>
 										<td><?= $contact['name'];?></td>
 										<td><?= $contact['email'];?></td>
 										<td><?= $contact['request'];?></td>
-										<td><a  class="btn btn-default">Archive</a></td>
+										<td class="text-right"><button type="button" class="btn btn-default deleteContactRequest" data-id="<?= $contact['Id']; ?>">Delete</button></td>
 									</tr>
 									<?php } ?>
 								</tbody>
