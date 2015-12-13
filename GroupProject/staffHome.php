@@ -123,19 +123,19 @@
 								<div class="form-group">
 									<label for="startDate" class="col-lg-2 control-label">Start Date:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="startDate" name="startDate" />
+										<input type="text" class="form-control" id="scheduleStartDate" name="startDate" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="endDate" class="col-lg-2 control-label">End Date:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="endDate" name="endDate"/>
+										<input type="text" class="form-control" id="scheduleEndDate" name="endDate"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="service" class="col-lg-2 control-label">Service:</label>
 									<div class="col-lg-10">
-										<select id="service" name="service" class="form-control">
+										<select id="scheduleService" name="service" class="form-control">
 											<option value="-1">Select a Service</option>
 											<?php foreach($servicesArr as $service){ ?>
 												<option value="<?php echo $service['Id']?>"><?= $service['name']; ?></option>
@@ -146,7 +146,7 @@
 								<div class="form-group">
 									<label for="client" class="col-lg-2 control-label">Client:</label>
 									<div class="col-lg-10">
-										<select id="client" name="client" class="form-control">
+										<select id="scheduleClient" name="client" class="form-control">
 											<option value="-1">Select a Client</option>
 											<?php foreach($clientsArr as $client){ ?> 
 												<option value="<?php echo $client['Id']?>"><?= $client['full_name']; ?></option>
@@ -156,8 +156,8 @@
 								</div>
 								<div class="form-group">
 									<div class="col-lg-10 col-lg-offset-2">
-										<a href="#" class="btn btn-default">Add</a>
-										<a href="#" class="btn btn-default" id="filterSchedule">Filter</a>
+										<a class="btn btn-default">Add</a>
+										<a class="btn btn-default" id="filterSchedule">Filter</a>
 									</div>
 								</div>
 							</form>

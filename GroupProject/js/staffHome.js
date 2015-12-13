@@ -6,6 +6,7 @@ $(document).ready( function() {
 	addOrganization();
 	deleteOrganization();
 	deleteServiceRequest();
+	filterSchedule();
 });
 
 function nameUpdate(){
@@ -23,7 +24,7 @@ function nameUpdate(){
 		 var requestId = request.data().id;
 		 $.ajax({
 			 type:"POST",
-			 url: "php/controller/staffHome/deleteServiceRequestController",
+			 url: "php/controller/staffHome/deleteServiceRequestController.php",
 			 data: {requestId : requestId},
 			 dataType: "json",
 			 success: function(response){
@@ -42,19 +43,27 @@ function nameUpdate(){
  function filterSchedule(){
 	 $("#filterSchedule").on("click",function(){
 		 var filterForm = $("#filterScheduleForm");
+		 debugger;
+		 var startDate = $("#scheduleStartDate").val();
+		 var endDate = $("#scheduleEndDate").val();
 		$.ajax({
 			type:"POST",
-			url: "php/controller/staffHome/filterScheduleController",
+			url: "php/controller/staffHome/filterScheduleController.php",
 			data: filterForm.serialize(),
 			dataType: "json",
 			success: function(response){
+				
 				if(response.success){
+					debugger;
 					console.log("You did it!!");
 					//do something with the info
 				}else{
 					alert('An error has occured! Error in console');
 					console.log(response.errorMessage);
 				}
+			},
+			error: function(response) {
+				console.log(response.errorMessage);
 			}
 		}) 
 	 });
