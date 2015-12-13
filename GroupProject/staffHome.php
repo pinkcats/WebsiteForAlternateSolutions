@@ -123,13 +123,13 @@
 								<div class="form-group">
 									<label for="startDate" class="col-lg-2 control-label">Start Date:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="scheduleStartDate" name="startDate" />
+										<input type="date" class="form-control" id="scheduleStartDate" name="startDate" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="endDate" class="col-lg-2 control-label">End Date:</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control" id="scheduleEndDate" name="endDate"/>
+										<input type="date" class="form-control" id="scheduleEndDate" name="endDate"/>
 									</div>
 								</div>
 								<div class="form-group">
@@ -156,12 +156,12 @@
 								</div>
 								<div class="form-group">
 									<div class="col-lg-10 col-lg-offset-2">
-										<a class="btn btn-default">Add</a>
+										<a class="btn btn-default" id="addSchedulingButton">Add</a>
 										<a class="btn btn-default" id="filterSchedule">Filter</a>
 									</div>
 								</div>
 							</form>
-							<table class="table table-striped table-hover">
+							<table class="table table-striped table-hover" id="filterScheduleTable">
 								<thead>
 									<tr>
 										<th>Client</th>
@@ -170,7 +170,7 @@
 										<th>End Date</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody id="filterScheduleTableRows">
 								<?php foreach($schedulesArr as $schedule){?>
 									<tr>
 										<td><?= $schedule['first_name']." ".$schedule['last_name'];?></td>
@@ -293,6 +293,64 @@
 		</div>
 
 		<!-- Modals -->
+		<div class="modal" id="addScheduling">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							<span class="glyphicon glyphicon glyphicon-remove"></span>
+						</button>
+						<h4 class="modal-title">Add Scheduling</h4>
+					</div>
+					<div class="modal-body">
+        				<article>
+							<form class="form-horizontal" id="addSchedulingForm">
+								<div class="form-group">
+									<label for="scheduleClientPopup" class="col-lg-2 control-label">Client:</label>
+									<div class="col-lg-10">
+										<select id="scheduleClientPopup" name="scheduleClient" class="form-control">
+											<option value="-1">Select a Client</option>
+											<?php foreach($clientsArr as $client){ ?> 
+												<option value="<?php echo $client['Id']?>"><?= $client['full_name']; ?></option>
+											<?php } ?>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="scheduleServicePopup" class="col-lg-2 control-label">Service:</label>
+									<div class="col-lg-10">
+										<select id="scheduleServicePopup" name="scheduleService" class="form-control">
+											<option value="-1">Select a Service</option>
+											<?php foreach($servicesArr as $service){ ?>
+												<option value="<?php echo $service['Id']?>"><?= $service['name']; ?></option>
+											<?php } ?>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+      								<label for="addScheduleStart" class="col-lg-2 control-label">Start Date:</label>
+      								<div class="col-lg-10">
+										<input type="date" class="form-control" id="addScheduleStart" name="addScheduleStart"/>
+      								</div>
+    							</div>
+								<div class="form-group">
+      								<label for="addScheduleEnd" class="col-lg-2 control-label">End Date:</label>
+      								<div class="col-lg-10">
+										<input type="date" class="form-control" id="addScheduleEnd" name="addScheduleEnd"/>
+      								</div>
+    							</div>
+							</form>
+						</article>
+      				</div>
+					<div class="modal-footer">
+        				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        				<button type="button" class="btn btn-default" id="addScheduleSubmit">Submit</button>
+      				</div>
+				</div>
+			</div>
+		</div>
+		
+		
 		<div class="modal" id="addSidebarLinkModal">
   			<div class="modal-dialog">
     			<div class="modal-content">

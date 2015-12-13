@@ -7,6 +7,8 @@ $(document).ready( function() {
 	deleteOrganization();
 	deleteServiceRequest();
 	filterSchedule();
+	addSchedulingModal();
+	addSchedulePopup();
 });
 
 function nameUpdate(){
@@ -40,10 +42,42 @@ function nameUpdate(){
 	 });
  }
  
+ function addSchedulingModal(){
+	 $("#addSchedulingButton").on("click",function(){
+		 $("#addScheduling").modal("show");
+	 });
+ }
+ 
+ function addSchedulePopup(){
+	 $("#addScheduleSubmit").on("click", function(){
+	 var scheduleForm = $("#addSchedulingForm");
+		 $.ajax({
+			 type:"POST",
+			 url:"php/controller/staffHome/addScheduleController.php",
+			 data: scheduleForm.serialize(),
+			 dataType: "json",
+			 success:function(response){
+				 if(response.success){
+					 $("#addScheduling").modal("hide");
+					 var table = $("#filterScheduleTableRows");
+					 var name = "<td>" + $("#scheduleClientPopup option:selected").text() + "</td>";
+					 var service = "<td>" + $("#scheduleServicePopup option:selected").text() +"</td>";
+					 var startDate = "<td>" + $("#addScheduleStart").val() + "</td>";
+					 var endDate = "<td>" + $("#addScheduleEnd").val() + "</td>";
+					 var row = "<tr>" +name+ ""+service+""+startDate+""+endDate+"</tr>";
+					 $("#filterScheduleTableRows").append(row);
+				 }else{
+					 alert('An error has occured! Error in console.');
+					 console.log(response.errorMessage)
+				 }
+			 }
+		 })
+	});
+ }
+ 
  function filterSchedule(){
 	 $("#filterSchedule").on("click",function(){
 		 var filterForm = $("#filterScheduleForm");
-		 debugger;
 		 var startDate = $("#scheduleStartDate").val();
 		 var endDate = $("#scheduleEndDate").val();
 		$.ajax({
@@ -54,9 +88,22 @@ function nameUpdate(){
 			success: function(response){
 				
 				if(response.success){
-					debugger;
 					console.log("You did it!!");
-					//do something with the info
+					var ourTable = $("#filterScheduleTableRows").children();
+					ourTable.fadeOut(function(){
+						$(this).empty();
+					});
+					var rows = response.rows;
+					for(var i =0; i < rows.length; i++)
+					{
+						var fullName = rows[i].firstName + " " + rows[i].lastName; 
+						var name = "<td>"+ fullName +"</td>";
+						var service = "<td>"+ rows[i].serviceName +"</td>";
+						var startDate = "<td>"+ rows[i].startDate +"</td>";
+						var endDate = "<td>"+ rows[i].endDate +"</td>";
+						var row = "<tr>"+ name +""+ service +""+ startDate +""+ endDate +"</tr>";
+						$("#filterScheduleTableRows").append(row);
+					}
 				}else{
 					alert('An error has occured! Error in console');
 					console.log(response.errorMessage);
