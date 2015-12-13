@@ -23,9 +23,10 @@ $(document).ready( function() {
 				dataType: "json",
 				success: function(response) {
 					$("#loginError").hide();
-					console.log(response.success);
 					if(response.success){
 						window.location = "clientHome.php";
+					}else{
+						$("#loginError").show();
 					}
 				}
 			});  

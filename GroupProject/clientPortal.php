@@ -58,7 +58,7 @@
 										<a href="register.php" class="btn btn-default">Register</a>
 									</div>
 								</div>
-								<span id="loginError"> The Username or password is invalid.</span>
+								<span id="loginError" class="error col-lg-10 col-lg-offset-2"> The Username or password is invalid.</span>
 							</form>
 					</article>
 					</div>
