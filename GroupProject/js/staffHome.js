@@ -96,11 +96,10 @@ function deleteContactRequest(){
 };
 
 function addSchedulingModal(){
-	$("#addSchedulingButton").on("click",function(){
-		$("#addScheduling").modal("show");
-	});
-}
- 
+	 $("#addSchedulingButton").on("click",function(){
+		 $("#addScheduling").modal("show");
+	 });
+ } 
 function addSchedulePopup(){
 	$("#addScheduleSubmit").on("click", function(){
 	var scheduleForm = $("#addSchedulingForm");

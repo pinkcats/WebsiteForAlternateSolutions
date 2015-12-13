@@ -17,11 +17,11 @@
 	try {
 		$query = $db->prepare("
 SELECT 
-	users.first_name, 
-	users.last_name, 
-	schedule.startDate, 
-	schedule.endDate, 
-	services.name,
+	users.first_name AS firstName, 
+	users.last_name AS lastName, 
+	schedule.startDate AS startDate, 
+	schedule.endDate AS endDate, 
+	services.name AS serviceName,
 	@start_date := ?,
 	@end_date := ?,
 	@service := ?,
@@ -39,9 +39,9 @@ WHERE
     )
     OR
     (
-        schedule.startDate <= @end_date := ?
+        startDate <= @end_date := ?
         AND
-        @start_date := ? <= schedule.endDate
+        @start_date := ? <= endDate
     )
     
 )
@@ -60,7 +60,7 @@ AND
 		$query->execute(array($startDate, $endDate, $service, $client, $startDate, $endDate, $endDate, $startDate, $service, $service, $client, $client));
 		$rows = $query->fetchAll(PDO::FETCH_ASSOC);
 		$filterResponse['success'] = TRUE;
-		$filterResponse['stuff'] = $rows;
+		$filterResponse['rows'] = $rows;
 	}catch(PDOException $ex){
 		$filterResponse['errorMessage']  = $ex->getMessage();
 	}
