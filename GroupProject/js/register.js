@@ -39,10 +39,8 @@ $(document).ready( function() {
 					dataType: "json",
 					success: function(response) {
 						if(response.success){
-							console.log("successful");
 							isValidStaffLogin = true;
 						}else if(!response.success){
-							console.log("not successful");
 							isValidStaffLogin = false;	
 						} else {
 							alert('An error has occured! Error in console.');
@@ -126,7 +124,6 @@ $(document).ready( function() {
 				data: data,
 				dataType: "json",
 				success: function(response) {
-					console.log(response.success);
 					if(response.success){
 						window.location = "clientPortal.php";
 					} else {

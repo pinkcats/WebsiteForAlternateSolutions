@@ -21,9 +21,9 @@
 	}
 
 	try{
-		$sidebarLinks = $db->prepare("SELECT Id, title, link, (isArchived + 0) AS isArchived FROM sidebarLinks ORDER BY Id DESC");
-		$sidebarLinks->execute(array());
-		$sidebarLinksArr = $sidebarLinks->fetchAll(PDO::FETCH_ASSOC);
+		$sidebarLinksAdmin = $db->prepare("SELECT Id, title, link, (isArchived + 0) AS isArchived FROM sidebarLinks ORDER BY Id DESC");
+		$sidebarLinksAdmin->execute(array());
+		$sidebarLinksArrAdmin = $sidebarLinksAdmin->fetchAll(PDO::FETCH_ASSOC);
 	}catch (PDOException $ex){
 		echo "Something went wrong with getting the sidebar links"; 
 		echo $ex->getMessage();
@@ -310,7 +310,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<?php foreach($sidebarLinksArr as $link){ ?>
+										<?php foreach($sidebarLinksArrAdmin as $link){ ?>
 											<tr>
 												<td id="title<?= $link['Id']; ?>"><?= $link['title']; ?></td>
 												<td id="link<?= $link['Id']; ?>"><a target="_blank" href="<?= $link['link']; ?>"><?= $link['link']; ?></a></td>
@@ -335,7 +335,6 @@
 											<th>Name</th>
 											<th>Key</th>
 											<th></th>
-											<th></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -348,7 +347,6 @@
 												<td class="hidden" id="organizationCity<?= $organization['Id']; ?>"><?= $organization['city']; ?></td>
 												<td class="hidden" id="organizationState<?= $organization['Id']; ?>"><?= $organization['state']; ?></td>
 												<td class="hidden" id="organizationzipCode<?= $organization['Id']; ?>"><?= $organization['zip_code']; ?></td>
-												<td class="text-right"><button type="button" class="btn btn-default editOrganization" data-id="<?= $organization['Id']; ?>">Edit</button></td>
 												<td class="text-right"><button type="button" class="btn btn-default deleteOrganization" data-id="<?= $organization['Id']; ?>">Delete</button></td>
 											</tr>
 										<?php } ?>

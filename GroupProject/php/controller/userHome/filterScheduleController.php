@@ -3,8 +3,8 @@
 	$startDate = $_POST['startDate'];
 	$endDate = $_POST["endDate"];
 	$service = $_POST["service"];
-	$client = $_POST["client"];
 	include_once "../../dbConfig.php";
+	include_once "../../userConfig.php";
 	$filterResponse = array("success" => FALSE);
 	if($startDate != "")
 	{
@@ -27,8 +27,7 @@
 									services.name AS serviceName,
 									@start_date := ?,
 									@end_date := ?,
-									@service := ?,
-									@client := ?
+									@service := ?
 								FROM 
 									schedule AS schedule
 									INNER JOIN users AS users ON users.Id = schedule.clientId
@@ -55,15 +54,11 @@
 								    schedule.serviceId = @service := ?
 								)
 								AND
-								(
-								    @client := ? = -1
-								    OR
-								    schedule.clientId = @client := ?
-								)
+									users.Id = ?
 								ORDER BY 
 									startDate
 		");
-		$query->execute(array($startDate, $endDate, $service, $client, $startDate, $endDate, $endDate, $startDate, $service, $service, $client, $client));
+		$query->execute(array($startDate, $endDate, $service, $startDate, $endDate, $endDate, $startDate, $service, $service, $userId));
 		$rows = $query->fetchAll(PDO::FETCH_ASSOC);
 		$filterResponse['success'] = TRUE;
 		$filterResponse['rows'] = $rows;

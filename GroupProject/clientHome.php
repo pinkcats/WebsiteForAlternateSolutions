@@ -28,7 +28,14 @@
 		echo $ex->getMessage();
 	}
 
-	
+	try{
+		$schedules = $db->prepare("SELECT users.first_name, users.last_name, schedule.startDate, schedule.endDate, services.name FROM users INNER JOIN schedule ON users.Id = schedule.clientId INNER JOIN services ON schedule.serviceId = services.Id WHERE schedule.isArchived =0 AND users.Id  = ?");
+		$schedules->execute(array($userId));
+		$schedulesArr = $schedules->fetchAll(PDO::FETCH_ASSOC);
+	}catch(PDOException $ex){
+		echo "Something went wrong with getting the schedule requests";
+		echo $ex->getMessage();
+	}
 
 
 ?>
@@ -158,10 +165,10 @@
 												?>
 													<div class="form-group">
 														<div class="col-lg-12">
-															<p><strong>Organization Name: </strong><span><?= $organizationInfo[0]["name"]; ?></span><p>
+															<p><strong>Name: </strong><span><?= $organizationInfo[0]["name"]; ?></span><p>
 														</div>
 														<div class="col-lg-12">
-															<p><strong>Organization Contact Email: </strong><span><?= $organizationInfo[0]["email"]; ?></span></p>
+															<p><strong>Contact Email: </strong><span><?= $organizationInfo[0]["email"]; ?></span></p>
 														</div>
 													</div>
 												<?php
@@ -189,46 +196,66 @@
 						</div>
 						<div class="tab-pane fade" id="services">
 							<div class="well">
+								<h3>Schedule of Services</h3>
 								<article>
-									<h3>Schedule of Services</h3>
-									<form class="form-horizontal">
+									<form class="form-horizontal" id="filterScheduleForm">
 										<div class="form-group">
-											<label for="startDate" class="col-lg-2 control-label">
-											Start Date:
-											</label>
+											<label for="startDate" class="col-lg-2 control-label">Start Date:</label>
 											<div class="col-lg-10">
-												<input type="date" class="form-control" id="startDate" name="startDate"/>
+												<input type="date" class="form-control" id="scheduleStartDate" name="startDate" />
 											</div>
 										</div>
 										<div class="form-group">
-											<label for="endDate" class="col-lg-2 control-label">
-											End Date:</label>
+											<label for="endDate" class="col-lg-2 control-label">End Date:</label>
 											<div class="col-lg-10">
-												<input type="date" class="form-control" id="endDate" name="endDate"/>
+												<input type="date" class="form-control" id="scheduleEndDate" name="endDate"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="service" class="col-lg-2 control-label">Service:</label>
+											<div class="col-lg-10">
+												<select id="scheduleService" name="service" class="form-control">
+													<option value="-1">Select a Service</option>
+													<?php foreach($servicesArr as $service){ ?>
+														<option value="<?php echo $service['Id']?>"><?= $service['name']; ?></option>
+													<?php } ?>
+												</select>
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="col-lg-10 col-lg-offset-2">
-												<a href="#" class="btn btn-default">Submit</a>
+												<a class="btn btn-default" id="filterSchedule">Filter</a>
 											</div>
 										</div>
-										<table class="table">
-											<tbody>
-												<?php foreach($services as $service){ ?> 
-													<tr>
-														<td><?= $service['name']; ?></td>
-														<td><a class="btn btn-default">Schedule</a></td>
-													</tr>
-												<?php } ?>
-											</tbody>
-										</table>
 									</form>
+									<table class="table table-striped table-hover" id="filterScheduleTable">
+										<thead>
+											<tr>
+												<th>Service</th>
+												<th>Start Date</th>
+												<th>End Date</th>
+											</tr>
+										</thead>
+										<tbody id="filterScheduleTableRows">
+										<?php foreach($schedulesArr as $schedule){?>
+											<tr>
+												<td><?= $schedule['name'];?></td>
+												<td><?= $schedule['startDate']; ?></td>
+												<td><?= $schedule['endDate'];?></td>
+											</tr>
+										<?php } ?>
+										</tbody>
+									</table>
 								</article>
 							</div>
 							<div class="well">
 								<article>
 									<h3>Request Service</h3>
 									<form id="serviceRequestForm" class="form-horizontal">
+										<div id="serviceRequestSuccess" class="alert alert-dismissible alert-success" hidden>
+											<button type="button" class="close" data-dismiss="alert"><span class="glyphicon glyphicon-remove"></span></button>
+											Service succesfully requested.
+										</div>
 										<div class="form-group">
 											<label for="service" class="col-lg-2 control-label">
 											Service:</label>

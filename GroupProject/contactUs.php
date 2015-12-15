@@ -43,6 +43,10 @@
 						<article>
 							<h3>Do you or your orgnizaiton need conflict resolution?</h3>
 							<form id="contactUsForm" class="form-horizontal">
+								<div id="contactUsSuccess" class="alert alert-dismissible alert-success" hidden>
+											<button type="button" class="close" data-dismiss="alert"><span class="glyphicon glyphicon-remove"></span></button>
+											Thank you for reaching out to us. We will respond to you as soon as we are able.
+										</div>
 								<div class="form-group">
 									<label for="contactUsName" class="col-lg-2 control-label">
 										Name: </label>

@@ -2,6 +2,7 @@ $(document).ready( function() {
 	contactInfo();
 	serviceRequest();
 	joinOrganization();
+	filterSchedule();
 });
 
 function contactInfo(){
@@ -33,7 +34,6 @@ function contactInfo(){
 			data: contactInfoForm.serialize(),
 			dataType: "json",
 			success: function(response) {
-				console.log(response.success);
 				if(response.success){
 					window.location = "clientHome.php";
 				} else {
@@ -69,9 +69,9 @@ function serviceRequest(){
 			data: serviceRequestForm.serialize(),
 			dataType: "json",
 			success: function(response) {
-				console.log(response.success);
 				if(response.success){
-					alert("worked");
+					$("#serviceRequestForm").trigger('reset');
+					$("#serviceRequestSuccess").fadeIn();
 				} else {
 					alert('An error has occured! Error in console.');
 					console.log(response.errorMessage);
@@ -126,5 +126,42 @@ function joinOrganization(){
 				joinOrganizationForm.trigger("reset");
 			}
 		});  
+	});
+};
+
+function filterSchedule(){
+	$("#filterSchedule").on("click",function(){
+		var filterForm = $("#filterScheduleForm");
+		var startDate = $("#scheduleStartDate").val();
+		var endDate = $("#scheduleEndDate").val();
+		$.ajax({
+			type:"POST",
+			url: "php/controller/userHome/filterScheduleController.php",
+			data: filterForm.serialize(),
+			dataType: "json",
+			success: function(response){
+				if(response.success){
+					var ourTable = $("#filterScheduleTableRows").children();
+					ourTable.fadeOut(function(){
+						$(this).empty();
+					});
+					var rows = response.rows;
+					for(var i =0; i < rows.length; i++)
+					{
+						var service = "<td>"+ rows[i].serviceName +"</td>";
+						var startDate = "<td>"+ rows[i].startDate +"</td>";
+						var endDate = "<td>"+ rows[i].endDate +"</td>";
+						var row = "<tr>"+ service +""+ startDate +""+ endDate +"</tr>";
+						$("#filterScheduleTableRows").append(row);
+					}
+				}else{
+					alert('An error has occured! Error in console');
+					console.log(response.errorMessage);
+				}
+			},
+			error: function(response) {
+				console.log(response.errorMessage);
+			}
+		}) 
 	});
 };

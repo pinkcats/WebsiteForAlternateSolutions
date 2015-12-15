@@ -8,7 +8,6 @@ $(document).ready( function() {
 	deleteContactRequest();
 	filterSchedule();
 	contactInfo();
-	filterSchedule();
 	addSchedulingModal();
 	addSchedulePopup();
 });
@@ -140,7 +139,6 @@ function filterSchedule(){
 			success: function(response){
 				
 				if(response.success){
-					console.log("You did it!!");
 					var ourTable = $("#filterScheduleTableRows").children();
 					ourTable.fadeOut(function(){
 						$(this).empty();
@@ -340,9 +338,8 @@ function addOrganization() {
 					var city = "<td class='hidden' id='organizationCity"+ newOrganization.id +"'>"+ newOrganization.city +"</td>";
 					var state = "<td class='hidden' id='organizationState"+ newOrganization.id +"'>"+ newOrganization.state +"</td>";
 					var zipCode = "<td class='hidden' id='organizationzipCode"+ newOrganization.id +"'>"+ newOrganization.zipCode +"</td>";
-					var editButton = "<td class='text-right'><button type='button' class='btn btn-default editOrganization' data-id='"+ newOrganization.id +"'>Edit</button></td>";;
 					var deleteButton = "<td class='text-right'><button type='button' class='btn btn-default deleteOrganization' data-id='"+ newOrganization.id +"'>Delete</button></td>";
-					var rows = name + "" + key + "" + email + "" + address + "" + city + "" + state + "" + zipCode + "" + editButton + "" + deleteButton;
+					var rows = name + "" + key + "" + email + "" + address + "" + city + "" + state + "" + zipCode + "" + deleteButton;
 					$('#organizationsTable > tbody').hide().prepend("<tr class='success'>"+ rows +"</tr>").fadeIn("slow");
 				} else {
 					alert('An error has occured! Error in console.');
