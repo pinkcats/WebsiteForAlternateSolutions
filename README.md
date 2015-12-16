@@ -5,11 +5,16 @@ to work on a different server because all our links are relative.
 
 If you do need to change the DB information that can be found in php/dbConfig.php/dbConfig
 
-Admin Login: 
-username- test@work.please
-password- test
+###Admin Login: 
 
-User Login: 
-username- test@test.test
-password- test
+**username**- test@work.please
+
+**password**- test
+
+
+###User Login: 
+
+**username**- test@test.test
+
+**password**- test
 
