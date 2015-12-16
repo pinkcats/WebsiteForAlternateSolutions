@@ -38,7 +38,6 @@ function contactInfo(){
 					window.location = "clientHome.php";
 				} else {
 					alert('An error has occured! Error in console.');
-					console.log(response.errorMessage);
 				}
 			}
 		});  
@@ -74,7 +73,6 @@ function serviceRequest(){
 					$("#serviceRequestSuccess").fadeIn();
 				} else {
 					alert('An error has occured! Error in console.');
-					console.log(response.errorMessage);
 				}
 			}
 		});  
@@ -156,11 +154,10 @@ function filterSchedule(){
 					}
 				}else{
 					alert('An error has occured! Error in console');
-					console.log(response.errorMessage);
 				}
 			},
 			error: function(response) {
-				console.log(response.errorMessage);
+				alert('An error has occured!');
 			}
 		}) 
 	});

@@ -9,7 +9,6 @@ $(document).ready( function() {
     	}
     });
 
-
     $("#registerSubmit").on("click", function() {
     	//The user has tried submitting once so from here
     	//on out we can check to remove validation after typing
@@ -44,7 +43,6 @@ $(document).ready( function() {
 							isValidStaffLogin = false;	
 						} else {
 							alert('An error has occured! Error in console.');
-							console.log(response.errorMessage);
 						}
 					}
 				}).done(function(){
@@ -86,7 +84,7 @@ $(document).ready( function() {
 				}
 			},
 			error: function(response) {
-				console.log(response.errorMessage);
+				alert("An error occured on organization check.");
 			}
 		}).done(function(response){
 			markValid(response);
@@ -128,7 +126,6 @@ $(document).ready( function() {
 						window.location = "clientPortal.php";
 					} else {
 						alert('An error has occured! Error in console.');
-						console.log(response.errorMessage);
 					}
 				}
 			}); 

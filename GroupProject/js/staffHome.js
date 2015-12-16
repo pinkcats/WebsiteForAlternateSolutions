@@ -45,7 +45,6 @@ function contactInfo(){
 					window.location = "staffHome.php";
 				} else {
 					alert('An error has occured! Error in console.');
-					console.log(response.errorMessage);
 				}
 			}
 		});  
@@ -66,7 +65,6 @@ function deleteServiceRequest (){
 					$("#request"+requestId).parent().addClass("danger").delay(250).fadeOut();
 				}else{
 					alert('An error has occured! Error in console.');
-					console.log(response.errorMessage);
 				}
 			}
 		})
@@ -87,7 +85,6 @@ function deleteContactRequest(){
 					$("#contactRequest"+requestId).parent().addClass("danger").delay(250).fadeOut();
 				}else{
 					alert('An error has occured! Error in console.');
-					console.log(response.errorMessage);
 				}
 			}
 		})
@@ -119,7 +116,6 @@ function addSchedulePopup(){
 					$("#filterScheduleTableRows").append(row);
 				 }else{
 				alert('An error has occured! Error in console.');
-					console.log(response.errorMessage);
 				}
 			}
 		})
@@ -156,7 +152,6 @@ function filterSchedule(){
 					}
 				}else{
 					alert('An error has occured! Error in console');
-					console.log(response.errorMessage);
 				}
 			},
 			error: function(response) {
@@ -182,7 +177,6 @@ function deleteSidebarLink() {
 					$("#title" + linkId).parent().addClass("danger").delay(250).fadeOut();
 				} else {
 					alert('An error has occured! Error in console.');
-					console.log(response.errorMessage);
 				}
 			}
 		});  
@@ -244,7 +238,6 @@ function editSidebarLink() {
 					$("#isArchived" + currentLinkId).text(newIsArchived);
 				} else {
 					alert('An error has occured! Error in console.');
-					console.log(response.errorMessage);
 				}
 			},
 			complete: function() {
@@ -292,7 +285,6 @@ function addSidebarLink() {
 					$('#sidebarLinksTable > tbody').hide().prepend("<tr class='success'>" + title + "" + linkAddress + "" + isArchived + "" + editButton + "" + deleteButton + "</tr>").fadeIn("slow");
 				} else {
 					alert('An error has occured! Error in console.');
-					console.log(response.errorMessage);
 				}
 			},
 			complete: function() {
@@ -343,7 +335,6 @@ function addOrganization() {
 					$('#organizationsTable > tbody').hide().prepend("<tr class='success'>"+ rows +"</tr>").fadeIn("slow");
 				} else {
 					alert('An error has occured! Error in console.');
-					console.log(response.errorMessage);
 				}
 			},
 			complete: function() {
@@ -370,7 +361,6 @@ function deleteOrganization() {
 					$("#organizationName" + organizationId).parent().addClass("danger").delay(250).fadeOut();
 				} else {
 					alert('An error has occured! Error in console.');
-					console.log(response.errorMessage);
 				}
 			}
 		});  
